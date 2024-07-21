@@ -7,11 +7,11 @@ list.appendChild(newListItem);
 newListItem.innerHTML = 'Bonus: 1 cup chopped raw pecans';
 //document.querySelector('ul').appendChild(newListItem);
 
-let checkbox = document.createElement('input');
+/*let checkbox = document.createElement('input');
 checkbox.type = "checkbox";
 checkbox.name = "listItems";
 checkbox.value = "value";
-checkbox.id = "id";
+checkbox.id = "id";*/
 
 /* To add label to checkbox
 var label = document.createElement('label');
@@ -22,15 +22,15 @@ label.appendChild (
 
 //list.appendChild(checkbox);
 
-/*
+//list.prepend
  function checkboxList() {
     for (let i = 0; i <listItems.length; i++) {
         let listItemCheckbox = document.createElement('input');
         listItemCheckbox.type = 'checkbox';
-        listItemCheckbox.appendChild(listItemCheckbox);
+        listItems[i].prepend(listItemCheckbox);
     }
- }
-*/
+ } 
+    checkboxList();
 
 //to add label to checkbox
 //list.appendChild(label);

@@ -37,6 +37,7 @@ console.log(headerElements);
 const recipeHeader = headerElements[0];
 const instructionsHeader = headerElements[1];
 
+//to add color change button click to single element
 /*
 function colorChange() {
     //console.log(recipeHeader);
@@ -73,3 +74,23 @@ instructionsHeader.addEventListener("click", () => colorChange(instructionsHeade
   el.addEventListener("click", eventFunction) */
 //recipeHeader.addEventListener("click", colorChange(recipeHeader));
 //instructionsHeader.addEventListener("click", colorChange);
+
+
+let magicButton = document.createElement('BUTTON');
+magicButton.type = "button";
+magicButton.name = "magic";
+
+list.appendChild(magicButton);
+magicButton.innerHTML = "Magic Button";
+magicButton.style.width = '100px';
+magicButton.style.height = '20px';
+magicButton.style.background = 'blanchedalmond';
+
+function buttonColorMagic() {
+    if(document.body.style.background == "rgb(248, 197, 227)") {
+        document.body.style.background = "honeydew";
+    } else {
+        document.body.style.background = "rgb(248, 197, 227)";
+    }
+}
+magicButton.addEventListener("click", buttonColorMagic);

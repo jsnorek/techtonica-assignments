@@ -32,5 +32,44 @@ label.appendChild (
  } 
     checkboxList();
 
-//to add label to checkbox
-//list.appendChild(label);
+const headerElements = document.getElementsByTagName('h2');
+console.log(headerElements);
+const recipeHeader = headerElements[0];
+const instructionsHeader = headerElements[1];
+
+/*
+function colorChange() {
+    //console.log(recipeHeader);
+    if(recipeHeader.style.color === "blue") {
+        recipeHeader.style.color = "rgb(101, 2, 60)";
+    } else {
+        recipeHeader.style.color = "blue";
+    }
+}       console.log(recipeHeader.style.color);
+
+
+recipeHeader.addEventListener("click", colorChange);
+instructionsHeader.addEventListener("click", colorChange);
+*/
+
+function colorChange(element) {
+    //console.log(recipeHeader);
+    if(element.style.color === "blue") {
+        element.style.color = "rgb(101, 2, 60)";
+    } else {
+        element.style.color = "blue";
+    }
+}      
+
+
+recipeHeader.addEventListener("click", () => colorChange(recipeHeader))
+instructionsHeader.addEventListener("click", () => colorChange(instructionsHeader))
+
+//long version
+/*function eventFunction() {
+    colorChange(recipeHeader)
+  }
+  
+  el.addEventListener("click", eventFunction) */
+//recipeHeader.addEventListener("click", colorChange(recipeHeader));
+//instructionsHeader.addEventListener("click", colorChange);

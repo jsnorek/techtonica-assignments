@@ -6,6 +6,24 @@
 }
 
 
+.title, .recipeBackground {
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.recipeBackground {
+  flex-direction: column;
+}
+
+/* splits content into 3 columns that are centered
+.recipeBackground {
+  display: flex;
+  justify-content: center;
+}*/
+
 .recipeContainer {
   display: flex;
   justify-content: space-evenly;
@@ -31,6 +49,12 @@ h1, h2 {
   border: 1px solid black;
 }
 
+/*.instructions {
+  display: flex;
+
+  border: 2px solid black;
+}*/
+
 /*
 .recipe {
   width: 250px;
@@ -48,6 +72,15 @@ h1, h2 {
   flex-wrap: wrap;
 } */
 
+/* 
+//designing mobile first
+@media (min-width: 600px) {
 
+}
 
+//designing desktop first
+@media (max-width: 600px) {
+
+}
+*/
 

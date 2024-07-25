@@ -73,21 +73,24 @@ h1, h2 {
 } */
 
 
-
-@media (min-width: 300px) {
+/* Mobile */
+@media (max-width: 400px) {
   img {
-    width: 10%;
+    width: 80%;
+    height: 80%;
   }
-  h1 {
-    color:red;
+  h1, h2 {
+    font-size: 40px;
+  }
+  .recipeContainer {
+    display: flex;
+    flex-direction: column;
   }
 }
 
-
-@media (min-width: 1080px) {
-  img {
-    width: 100%;
-  }
+/* Desktop */
+@media (min-width: 401px) {
+ 
 }
 
 

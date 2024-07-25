@@ -12,7 +12,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
+
 
 .recipeBackground {
   flex-direction: column;
@@ -27,10 +29,12 @@
 .recipeContainer {
   display: flex;
   justify-content: space-evenly;
+  background-color: rgba(252, 247, 250, 0.5);
 }
 
 body {
-  background-color: rgb(248, 197, 227);
+  background-image: linear-gradient(to bottom right,rgb(248, 197, 227), rgb(216, 209, 254));
+  /*background-color: rgb(248, 197, 227);*/
 }
 
 
@@ -84,6 +88,7 @@ h1, h2 {
     display: flex;
     justify-content: center;
     text-align: center;
+    margin-top: auto;
   }
   .recipeContainer {
     display: flex;
@@ -96,6 +101,9 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     text-align: center;
+  }
+  .photoCredit {
+    font-size: 10px;
   }
 }
 

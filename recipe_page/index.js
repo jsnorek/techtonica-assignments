@@ -86,11 +86,19 @@ magicButton.style.width = '100px';
 magicButton.style.height = '20px';
 magicButton.style.background = 'blanchedalmond';
 
-function buttonColorMagic() {
+/*function buttonColorMagic() {
     if(document.body.style.background == "rgb(248, 197, 227)") {
         document.body.style.background = "honeydew";
     } else {
         document.body.style.background = "rgb(248, 197, 227)";
+    }
+}*/
+
+function buttonColorMagic() {
+    if(document.body.style.background == "linear-gradient(rgb(248, 197, 227), rgb(206, 200, 242))") {
+        document.body.style.background = "linear-gradient(rgb(198, 247, 239), rgb(247, 245, 198))";
+    } else {
+        document.body.style.background = "linear-gradient(rgb(248, 197, 227), rgb(206, 200, 242))";
     }
 }
 magicButton.addEventListener("click", buttonColorMagic);

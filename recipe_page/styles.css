@@ -33,7 +33,7 @@
 }
 
 body {
-  background-image: linear-gradient(to bottom right,rgb(248, 197, 227), rgb(216, 209, 254));
+  background-image: linear-gradient(rgb(248, 197, 227), rgb(206, 200, 242));
   /*background-color: rgb(248, 197, 227);*/
 }
 

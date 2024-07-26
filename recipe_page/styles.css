@@ -109,7 +109,9 @@ h1, h2 {
 
 /* Desktop */
 @media (min-width: 401px) {
- 
+ .recipeContainer {
+  padding: 0 20px 0 20px;
+ }
 }
 
 

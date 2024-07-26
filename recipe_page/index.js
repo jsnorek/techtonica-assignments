@@ -102,3 +102,5 @@ function buttonColorMagic() {
     }
 }
 magicButton.addEventListener("click", buttonColorMagic);
+
+colorChangeNotice = alert("click on the recipe and instruction headers for a surprise!");

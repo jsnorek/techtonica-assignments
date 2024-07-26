@@ -105,13 +105,39 @@ h1, h2 {
   .photoCredit {
     font-size: 10px;
   }
+  #extraPhoto1, #extraPhoto2 {
+    display: none;
+  }
 }
 
-/* Desktop */
-@media (min-width: 401px) {
+/*desktop*/
+@media(min-width:401px) {
+  #extraPhoto1, #extraPhoto2 {
+    display: none;
+  }
+}
+
+/* tester */
+@media (min-width: 900px) and (max-width: 2000px) {
  .recipeContainer {
   padding: 0 20px 0 20px;
  }
+
+ #extraPhoto1, #extraPhoto2 {
+  display: flex;
+  width: 250px;
+  height: auto;
+  object-fit: fill;
+  margin-right: 50px;
+  
+ }
+
+ #photos {
+  display: flex;
+  justify-content: center;
+  padding: 50px 100px 50px 100px;
+ }
 }
+
 
 

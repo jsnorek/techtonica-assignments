@@ -94,6 +94,7 @@ magicButton.style.background = 'blanchedalmond';
     }
 }*/
 
+/*
 function buttonColorMagic() {
     if(document.body.style.background == "linear-gradient(rgb(248, 197, 227), rgb(206, 200, 242))") {
         document.body.style.background = "linear-gradient(rgb(198, 247, 239), rgb(247, 245, 198))";
@@ -102,5 +103,9 @@ function buttonColorMagic() {
     }
 }
 magicButton.addEventListener("click", buttonColorMagic);
+
+*/
+
+document.body.classList.toggle
 
 colorChangeNotice = alert("click on the recipe and instruction headers for a surprise!");

@@ -1,0 +1,40 @@
+
+body {
+    background-color: rgb(233, 250, 227);
+}
+
+.topSection {
+    display: flex;
+    float: left;
+    flex-direction: row;
+    align-items: end;
+    background-color: rgba(252, 247, 250, 0.5);
+    border: 2px solid black;
+    border-radius: 25px;
+}
+
+#headshot {
+    border-radius: 25px;
+}
+
+.headerSection {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding-left: 20px;
+}
+
+@media (max-width: 400px) {
+    #headshot {
+        width: 300px;
+        height: auto;
+        display: flex;
+        border: 2px solid black;
+      }
+    .topSection {
+        display: flex;
+        float: none;
+        flex-direction: column;
+        align-items: center;
+    }
+}

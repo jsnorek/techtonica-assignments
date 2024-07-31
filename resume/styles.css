@@ -1,10 +1,19 @@
 
 body {
     background-color: rgb(233, 250, 227);
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .topnav {
     overflow: hidden;
-    background-color: rgba(252, 247, 250);
+    background-color: rgb(90, 90, 102, .75);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 15px;
+    color: white;
+    border-radius: 25px;
+}
+
+.topnav a:visited {
+    color: white;
 }
 
 /* Change the color of links on hover */
@@ -13,11 +22,12 @@ body {
     color: white;
   }
 
-  /* Style the "active" element to highlight the current page */
+  /* Style the "active" element to highlight the current page 
 .topnav a.active {
     background-color: #46655b;
     color: white;
   }
+  */
 
 .topSection {
     display: flex;
@@ -38,6 +48,18 @@ body {
     flex-direction: column;
     margin: auto;
     padding-left: 20px;
+}
+
+#contact {
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid black;
+    background-image: linear-gradient(rgb(191, 154, 202), rgb(237, 162, 192));
+    border-radius: 25px;
+}
+
+.formPage {
+    background-color: rgb(90, 90, 102, .75);
 }
 
 @media (max-width: 400px) {
@@ -64,5 +86,34 @@ body {
         float: none;
         flex-direction: column;
         align-items: center;
+    }
+
+    .formPage {
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        border: 5px solid black;
+    }
+
+    .fieldset {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 200px;
+        margin: auto;
+        gap: 8px;
+    }
+   
+}
+
+@media (min-width: 900px) {
+    body {
+        background-color: rgb(251, 229, 195);
+    }
+}
+
+@media (min-width: 1200px) {
+    body {
+        background-color: rgb(238, 232, 255);
     }
 }

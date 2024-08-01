@@ -78,6 +78,13 @@ body {
     border: 2px solid black;
 }
 
+input[type=submit] {
+    background-color: #bf98cc;
+    padding: 0.5em 1em;
+    border: none;
+    cursor: pointer;
+}
+
 @media (max-width: 400px) {
     .topnav a, .topnav input[type=text] {
         display:flex;
@@ -87,7 +94,7 @@ body {
       }
       .topnav input[type=text] {
         border: 1px solid #ccc;
-      }
+      } 
 
     #headshot {
         width: 300px;
@@ -134,9 +141,16 @@ body {
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 200px;
+        
         margin: auto;
         gap: 8px;
+    }
+
+    input[type=submit] {
+        background-color: #bf98cc;
+        padding: 0.5em 1em;
+        border: none;
+        cursor: pointer;
     }
    
 }

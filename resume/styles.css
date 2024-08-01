@@ -5,7 +5,7 @@ body {
 }
 .topnav {
     overflow: hidden;
-    background-color: rgb(135, 135, 135, .75);
+    background-color: rgba(157, 176, 147, 0.75);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 15px;
     color: white;
@@ -54,34 +54,83 @@ body {
     display: flex;
     justify-content: space-evenly;
     border: 2px solid black;
-    background-image: linear-gradient(rgb(255, 194, 180), rgb(209, 190, 207));
+    background-image: linear-gradient(rgb(212, 175, 185), rgb(254, 233, 163));
     border-radius: 25px;
 }
 
 .skills {
-    background-color: rgba(255, 194, 180, .5);
-    width: 150px;
+    /*
+    display: flex;
+    flex-direction: column;
+    */
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    align-items: center;
+    background-color: rgb(212, 175, 185, .5);
+    width: 180px;
     border-radius: 25px;
-    border: 2px solid rgba(255, 194, 180);
+    border: 2px solid rgb(212, 175, 185);
+    list-style: none;
+}
+
+li {
+    padding: 10px;
 }
 
 .rightSide {
+    /*
     display: flex;
-    justify-content: right;
-    float: left;
-    border: 2px solid black;
+    flex-direction: column;
+    */
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    width: 50%;
+    justify-content: center;
+    position: relative;
+    height: 250px;
+    /*
+    left: 18%;
+    right: 30%;
+    top: 63%;
+    */
+    text-align: left;
+    margin-bottom: 10%;
 }
 
-.formPage {
-    background-color: rgb(90, 90, 102, .75);
+.mainBody {
+    display: grid;
+    column-gap: 10px;
+    row-gap: 50px;
+    grid-template-columns: 20% 40%;
+}
+
+ .fieldset {
+    background-color: rgba(157, 176, 147, 0.75);
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    /*
     display: flex;
-    border: 2px solid black;
+    position: relative;
+    flex-direction: column;
+    */
+    float:left;
+    border: 2px solid rgba(157, 176, 147);
+    border-radius: 25px;
+    width: 150px;
+    margin-bottom: 30%;
 }
 
 input[type=submit] {
-    background-color: #bf98cc;
+    background-image: linear-gradient(rgb(212, 175, 185), rgb(254, 233, 163));
     padding: 0.5em 1em;
     border: none;
+    border-radius: 25px;
     cursor: pointer;
 }
 
@@ -107,6 +156,13 @@ input[type=submit] {
         float: none;
         flex-direction: column;
         align-items: center;
+    }
+
+    .mainBody {
+        display: grid;
+        column-gap: 10px;
+        row-gap: 50px;
+        grid-template-columns: 20% 40%;
     }
 
     .skills {

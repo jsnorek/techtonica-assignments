@@ -6,8 +6,18 @@ button.innerText = "Flip Coin";
 button.id = "flipButton";
 document.body.appendChild(button);
 
-button.addEventListener('click', () => {
-    alert('test')
-});
+//button.addEventListener('click', () => {
+  //  alert('test')
+//});
 
-//document.body.appendChild(button);
+function coinflip() {
+    const random = Math.random();
+
+    if(random > 0.5) {
+        alert('Heads');
+    } else {
+        alert('Tails');
+    }
+}
+
+button.addEventListener('click', coinflip);

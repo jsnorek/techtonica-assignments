@@ -19,7 +19,7 @@ class Event {
         return "All tickets: " + this.availableTickets.map((ticket, index) => `${index + 1}. ${ticket.name} ($${ticket.price})`).join(" ")
       }
     }
-  //extra comment
+
   
   // The below statement creates an object.
   const eventObj1 = new Event(

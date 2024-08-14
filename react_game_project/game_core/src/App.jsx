@@ -4,6 +4,7 @@ import Asteroid from "./Asteroid";
 
 function App() {
   const [position, setPosition] = useState(0);
+  //const [bulletPosition, setBulletPosition] = useState(0);
   // const [score, setScore] = useState(0);
   // const [asteroid, setAsteroid] = useState({ x: generator(500), y: generator(700) });
 
@@ -23,6 +24,7 @@ function App() {
       }
     }
   }
+  
 
   // function addScore() {
   //   if(//asteroid blows up)

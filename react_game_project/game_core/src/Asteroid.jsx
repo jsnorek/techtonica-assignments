@@ -14,21 +14,28 @@ function Asteroid({position}) {
   //sets the timed interval for asteroids to drop down the screen
   useEffect(() => {
     const interval = setInterval(() => {
+        console.log(asteroid.y);
+        console.log(window.innerHeight);
+        if(asteroid.y >= window.innerHeight) {
+            console.log("passed window");
+            return clearInterval(interval); 
+        } 
       setAsteroid((prev) => {
         //compare ship and asteroid positions, if they are equal then game over
-        const shipY = 1200;
+        const shipY = 500;
+
         //compare asteroid Y positioning to shipY and asteroid.x to position (which is ship x position)
         //instead of === it has to be either a <= or >=
-        if(asteroid.y >= shipY)// && asteroid.x == position) {
-           { console.log("game over");
-        }
+        // if(prev.y >= shipY)// && asteroid.x == position) {
+        //    //{ console.log("game over");
+        // }
         return {
           ...prev,
           y: prev.y + 10
         }
       })
     }, 1000)
-  }, [])
+  }, [asteroid])
     return (<div className="asteriods" style={{ top: `${asteroid.y}px`, left: `${asteroid.x}px` }}>
         asteroid
       </div> );

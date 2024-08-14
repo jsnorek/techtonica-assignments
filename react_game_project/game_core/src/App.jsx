@@ -5,7 +5,7 @@ import Asteroid from "./Asteroid";
 function App() {
   const [position, setPosition] = useState(0);
   //const [bulletPosition, setBulletPosition] = useState(0);
-  // const [score, setScore] = useState(0);
+  const [score, setScore] = useState(0);
   // const [asteroid, setAsteroid] = useState({ x: generator(500), y: generator(700) });
 
   // function generator(maxBoundary) {
@@ -57,7 +57,7 @@ function App() {
       <div className="ship" style={{ transform: `translateX(${position}px)` }}>
         ship
       </div>
-      <Asteroid position={position}/>
+      <Asteroid position={position} setScore={setScore}/>
       {/* <Asteroid /> */}
       {/* <div className="asteriods" style={{ top: `${asteroid.y}px`, left: `${asteroid.x}px` }}>
         asteroid

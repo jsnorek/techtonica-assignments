@@ -4,6 +4,7 @@ import Asteroid from "./Asteroid";
 
 function App() {
   const [position, setPosition] = useState(0);
+  // const [score, setScore] = useState(0);
   // const [asteroid, setAsteroid] = useState({ x: generator(500), y: generator(700) });
 
   // function generator(maxBoundary) {
@@ -23,12 +24,19 @@ function App() {
     }
   }
 
+  // function addScore() {
+  //   if(//asteroid blows up)
+  //   setScore(previousScore => previousScore + 100)
+  // }
+
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleKeyDown]);
+
+
 
 
   // useEffect(() => {

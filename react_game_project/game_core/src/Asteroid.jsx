@@ -6,11 +6,12 @@ function Asteroid({position}) {
     //asteroid holds the "set" position of the asteroid
     //useState is creating the default position of asteroid
     const [asteroid, setAsteroid] = useState({ x: generator(500), y: generator(700) });
-
+    //create a random number using max boundary as a way to randomly position asteroids
   function generator(maxBoundary) {
     const randomNum = Math.floor(Math.random() * (maxBoundary + 1));
     return randomNum;
   }
+  //sets the timed interval for asteroids to drop down the screen
   useEffect(() => {
     const interval = setInterval(() => {
       setAsteroid((prev) => {

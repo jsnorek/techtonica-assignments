@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Asteroid from "./Asteroid";
+import Counter from "./Counter";
 
 
 function App() {
@@ -25,12 +26,14 @@ function App() {
     }
   }
   
-
+  //if ship position and asteroid position is the same, then score counter goes up, else stays 0
   // function addScore() {
   //   if(//asteroid blows up)
   //   setScore(previousScore => previousScore + 100)
   // }
 
+  
+  // addScore function will go here
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {
@@ -54,6 +57,7 @@ function App() {
 
   return (
     <div className="container">
+      <Counter score={score} setScore={setScore} />
       <div className="ship" style={{ transform: `translateX(${position}px)` }}>
         ship
       </div>

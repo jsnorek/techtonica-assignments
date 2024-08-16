@@ -1,24 +1,10 @@
-// import { useEffect, useState } from "react";
-
-// const [score, setScore] = useState(0);
-
-
-
-// function addScore() {
-//     if(Asteroid.y) {
-//     setScore(previousScore => previousScore + 100)
-//     }
-//   } 
-
-//   export default Counter;
-
 import React, { useState } from "react";
 
-
+//pulls useState from App
 export default function Counter({score, setScore}) {
     // shows count = 0 //count starting at 0
      
-      //increment function
+      //increment function to add points and reset score
       const incrementCounter = () => {
         setScore(score + 100);
       }

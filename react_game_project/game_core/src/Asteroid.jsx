@@ -22,8 +22,8 @@ function Asteroid({position, setScore}) {
     const shipY = window.innerHeight - 50;
     //checking if asteroid reaches bottom of browser window, the rest is checking the position of the asteroid and if they've collided
     if(asteroid.y >= shipY && (asteroid.x <= position + 50 && asteroid.x >= position - 50)) {
-      //console.log("game over");
-      //if asteroid hits ship from line 24, then gameOver state equals/stays 0 and setScore changes to add 100 to score
+      console.log("game over");
+      //if asteroid hits ship from line 24, then gameOver state equals 1 and setScore changes to add 100 to score
       if(gameOver === 0) {
       setScore((prev) => {
         return prev += 100;
@@ -56,7 +56,7 @@ function Asteroid({position, setScore}) {
       //moves asteroid down the y axis in increments of 10  
       return {
         ...prev,
-        y: prev.y + 10
+        y: prev.y + 20
       }
     }) }
   }, 1000)

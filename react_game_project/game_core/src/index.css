@@ -18,7 +18,9 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;  
   height: 100vh;
+  width: 100vh;
   position: relative;
+  /*background-image: url(https://i.pinimg.com/originals/b1/bd/c1/b1bdc1ae539dcbd1a7c33cef3e5f2d9a.gif); */
 }
 
 .ship {
@@ -27,6 +29,7 @@
   border: 1px solid white;
   width: 40px;
   text-align: center;
+  
 }
 
 .asteriods {
@@ -34,3 +37,5 @@
   border: 1px solid green;
   width: 40px;
 }
+
+

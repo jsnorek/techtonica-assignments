@@ -1,8 +1,5 @@
-# React + Vite
+# React Game Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Pending game project written with React
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## A pending game project that will ultimately be Galaga-like game where you control a ship that shoots down asteroids. Currently, you can only control the ship left and right and the goal is to try to "catch" the asteroids before they hit Earth.

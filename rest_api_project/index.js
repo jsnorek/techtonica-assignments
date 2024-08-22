@@ -1,5 +1,4 @@
 import express from 'express';
-
 import cors from 'cors';
 import albums from './albums.js';
 
@@ -18,6 +17,23 @@ app.get('/', (req, res) => {
 //create route for GET
 app.get('/albums', (req, res) => {
     res.json(albums)
+})
+
+// app.post('/albums', (req, res) => {
+//     const newAlbum = req.body;
+//     albums.push(newAlbum)
+//     res.send({message: 'New album added'})
+// })
+
+app.post ('/albums', (req, res) => {
+    console.log("Making a new album...");
+    
+    const data = {
+        title: req.body.title,
+        number: req.body.title,
+    };
+    console.log(data);
+    res.send(data);
 })
 
 

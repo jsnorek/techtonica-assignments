@@ -9,6 +9,9 @@ const PORT = 5001;
 
 //configuring cors middleware
 app.use(cors());
+//In your Express app, make sure you’re using the express.json() middleware to parse incoming JSON requests.
+app.use(express.json());
+
 
 //database connection setup
 const { Pool } = pkg;
@@ -40,6 +43,7 @@ app.get('/albums', async (req, res) => {
     }
 });
 
+
 //create route for GET
 // app.get('/albums', async (req, res) => {
 //     // for pulling hardcoded data
@@ -61,14 +65,46 @@ app.get('/albums', async (req, res) => {
 app.post('/albums', async (req, res) => {
     try {
         const { title, number, tracks, artist, date } = req.body;
-        const query = 'INSERT INTO items (title, number, tracks, artist, date) VALUES ($1, $2)';
-        await db.query(query, [title, number, tracks, artist, date]);
-        res.status(201).json({ message: 'Album created successfully' });
+        const query = 'INSERT INTO album (title, number, tracks, artist, date) VALUES ($1, $2, $3, $4, $5)';
+        //console.log(`this is the query: ${query}`);
+        const response = await db.query(query, [title, number, tracks, artist, date]);
+        //res.status(201).json({ message: 'Album created successfully' albums: [const created in line 70]});
+        const newAlbumQuery = `SELECT * FROM album WHERE number=${number}`;
+        const albumResponse = await db.query(newAlbumQuery);
+        res.status(201).json({ message: 'Album created successfully', albumResponse });
     } catch (error) {
-        res.status(500).json({ error: 'Error creating item' });
+        //res.status(500).json({ error: 'Error creating item' });
+        console.error(error);
     }
 });
 
+app.put('/albums/:number', async (req, res) => {
+    try {
+        const { title, tracks, artist, date } = req.body;
+        const albumNumber = req.params.number;
+        //const updateQuery = 'UPDATE album SET title = $1, tracks = $2, artist = $3, date = $4 WHERE number = $5';
+        //const albumResponse = await db.query(updateQuery, [title, tracks, artist, date, albumNumber]);
+        const updateQuery = `UPDATE album SET title = $1, tracks = $2, artist = $3, date = $4 WHERE number = ${albumNumber}`;
+        const albumResponse = await db.query(updateQuery, [title, tracks, artist, date]);
+        res.status(200).json({ message: `Album with number ${albumNumber} updated successfully`, albumResponse});
+    } catch (error) {
+        res.status(500).json({ error: 'Error updating album'});
+    }
+});
+        
+
+
+
+app.delete('/albums/:number', async (req, res) => {
+    try {
+        const albumNumber = req.params.number;
+        const deleteQuery = `DELETE FROM album WHERE number=${albumNumber}`;
+        await db.query(deleteQuery);
+        res.status(200).json({ message: 'Album deleted successfully'});
+    } catch (error) {
+        res.status(500).json({ error: 'Error deleting item'});
+    }
+});
 //not sure if this is accurate
 // app.post ('/albums', (req, res) => {
 //     console.log("Making a new album...");

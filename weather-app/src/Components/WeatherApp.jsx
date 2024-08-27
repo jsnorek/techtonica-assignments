@@ -5,7 +5,6 @@ import snowy from '../assets/images/snowy.png'
 import React, { useState } from 'react'
 
 
-
 const WeatherApp = () => {
     const [data, setDate] = useState({})
     //update based on location

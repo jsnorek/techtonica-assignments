@@ -10,7 +10,7 @@ const WeatherApp = () => {
     const [data, setDate] = useState({})
     //update based on location
     const [location, setLocation] = useState('')
-    const api_key = 'a5a488ba5a8f0bdad071811c3c9f4e06'
+    const api_key = ''
 
     //function to grab user entry into search bar
     const handleInputChange = (e) => {

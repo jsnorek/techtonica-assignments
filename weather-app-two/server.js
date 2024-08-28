@@ -9,7 +9,8 @@ const PORT = process.env.PORT || 5003;
 
 //creates an endpoint for the route /api
 app.get('/', (req, res) => {
-  res.json({ message: 'Hello from ExpressJS' });
+    res.send('Hello World')
+//   res.json({ message: 'Hello from ExpressJS' });
 });
 
 // console.log that your server is up and running

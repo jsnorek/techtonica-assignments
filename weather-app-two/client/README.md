@@ -7,4 +7,4 @@ See details like temperature, wind speed, and humidity.
 
 ### Sample-Image
 
-![weather app gif](.client/weather-app.gif)
+![weather app gif](https://github.com/jsnorek/techtonica-assignments/blob/main/weather-app-two/client/weather-app.gif)

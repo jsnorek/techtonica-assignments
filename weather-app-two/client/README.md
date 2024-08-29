@@ -17,6 +17,14 @@ Registration for an API key is neccessary. To do this, you must sign up for an a
 
 ![weather app gif](https://github.com/jsnorek/techtonica-assignments/blob/main/weather-app-two/client/weather-app.gif)
 
+### Setup Instructions
+
+1. clone the repository
+2. takes 1 environment variable: `api_key`
+3. run the front end: `npm run dev`
+4. run the back end: `node server.js`
+5. go to http://localhost:5173/ to see the app
+
 ### Frameworks
 
 This project is fullstack and uses ExpressJS for the backend and React (using Vite) for the frontend.

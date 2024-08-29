@@ -29,6 +29,8 @@ function App() {
         return rainy;
       case 'Snow':
         return snowy;
+      case 'Haze':
+        return cloudy;
     }
   };
 
@@ -93,6 +95,7 @@ function App() {
             />
             <i className='fa-solid fa-magnifying-glass' onClick={search}></i>
           </div>
+        </div>
           <div className='weather-stats'>
               {weatherData ? (
               <>
@@ -114,7 +117,7 @@ function App() {
                 <p>Loading weather data...</p>
             )}
           </div>
-        </div>
+        
       </div>
     </div>
   );

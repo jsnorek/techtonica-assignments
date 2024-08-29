@@ -8,7 +8,17 @@ export default defineConfig({
   server: {
     proxy: {
       // matches server.js port
-      '/': 'http://localhost:5003'
+      // '/': 'http://localhost:5003'
+       // Redirect API calls to the backend server
+      //  '/location': {
+      //   target: 'http://localhost:5003', // Backend server URL and port
+      //   changeOrigin: true,
+      // },
+      // '/': {
+      //   target: 'http://localhost:5003', // Default route for backend
+      //   changeOrigin: true,
+      // }
+        '/location:location': 'http://localhost:5003',
     }
   }
 });

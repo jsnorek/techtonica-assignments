@@ -97,19 +97,18 @@ function App() {
               {weatherData ? (
               <>
                 <h2>{weatherData.name}</h2>
-                <p>Temperature: {weatherData.main.temp}°C</p>
-                <p>{weatherData.weather[0].main}</p>
+                <p>Temperature: {Math.floor(weatherData.main.temp)}°F</p>
                 <p>Description: {weatherData.weather[0].description}</p>
-                <p>Feels like : {weatherData.main.feels_like}°C</p>
+                <p>Feels like : {Math.floor(weatherData.main.feels_like)}°F</p>
                 <p>Humidity : {weatherData.main.humidity}%</p>
                 <p>Pressure : {weatherData.main.pressure}</p>
-                <p>Wind Speed : {weatherData.wind.speed}m/s</p>
-                {/* <img src={ weatherImages } alt="weather" /> */}
+                <p>Wind Speed : {Math.floor(weatherData.wind.speed)}m/h</p>
                 <img 
-          src={getWeatherImage(weatherData.weather[0].main)} 
-          alt={weatherData.weather[0].main} 
-          style={{ width: '200px', height: '200px' }}
-        />
+                src={getWeatherImage(weatherData.weather[0].main)} 
+                alt={weatherData.weather[0].main} 
+                style={{ width: '200px', height: '200px' }}
+                />
+                <p>{weatherData.weather[0].main}</p>
               </>
               ) : (
                 <p>Loading weather data...</p>

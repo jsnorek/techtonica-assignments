@@ -100,8 +100,8 @@ function App() {
               {weatherData ? (
               <>
                 <h2>{weatherData.name}</h2>
-                <p>Temperature: {Math.floor(weatherData.main.temp)}°F</p>
-                <p>Description: {weatherData.weather[0].description}</p>
+                <p>{Math.floor(weatherData.main.temp)}°F</p>
+                {/* <p>Description: {weatherData.weather[0].description}</p> */}
                 <p>Feels like : {Math.floor(weatherData.main.feels_like)}°F</p>
                 <p>Humidity : {weatherData.main.humidity}%</p>
                 <p>Pressure : {weatherData.main.pressure}</p>

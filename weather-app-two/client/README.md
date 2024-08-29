@@ -28,3 +28,7 @@ Registration for an API key is neccessary. To do this, you must sign up for an a
 ### Frameworks
 
 This project is fullstack and uses ExpressJS for the backend and React (using Vite) for the frontend.
+
+### Stretch Goals
+
+Add 3-day and 5-day forecast options

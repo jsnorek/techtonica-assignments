@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import sunny from './assets/sunny.png'
+import cloudy from './assets/cloudy.png'
+import rainy from './assets/rainy.png'
+import snowy from './assets/snowy.png'
 // import dotenv from 'dotenv';
 // dotenv.config();
 
@@ -13,6 +17,23 @@ function App() {
     setLocation(e.target.value);
     // console.log({location});
   };
+
+  //to get weather image based on what data is coming from api
+  const getWeatherImage = (weatherCondition) => {
+    switch (weatherCondition) {
+      case 'Clear':
+        return sunny;
+      case 'Clouds':
+        return cloudy;
+      case 'Rain':
+        return rainy;
+      case 'Snow':
+        return snowy;
+    }
+  };
+
+ //to change image depending on pulled weather data from api
+//  const weatherImage = weatherData.weather ? weatherImages[weatherData.weather[0].main] : null;
 
   //to run the search function and pull data when the "enter" button is clicked 
   const handleKeyDown = (e) => {
@@ -77,12 +98,18 @@ function App() {
               <>
                 <h2>{weatherData.name}</h2>
                 <p>Temperature: {weatherData.main.temp}°C</p>
-                <p>{weatherData.weather.main}</p>
+                <p>{weatherData.weather[0].main}</p>
                 <p>Description: {weatherData.weather[0].description}</p>
                 <p>Feels like : {weatherData.main.feels_like}°C</p>
                 <p>Humidity : {weatherData.main.humidity}%</p>
                 <p>Pressure : {weatherData.main.pressure}</p>
                 <p>Wind Speed : {weatherData.wind.speed}m/s</p>
+                {/* <img src={ weatherImages } alt="weather" /> */}
+                <img 
+          src={getWeatherImage(weatherData.weather[0].main)} 
+          alt={weatherData.weather[0].main} 
+          style={{ width: '200px', height: '200px' }}
+        />
               </>
               ) : (
                 <p>Loading weather data...</p>

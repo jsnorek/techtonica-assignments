@@ -79,7 +79,7 @@ function App() {
   return (
     <div className='container'>
       <div className='weather-app'>
-        <h2>Weather App</h2>
+        <h1>Weather App</h1>
         {/* <h1>{weather}</h1> */}
         <div className='search'>
           <div className='search-top'>
@@ -110,7 +110,7 @@ function App() {
                 <img 
                 src={getWeatherImage(weatherData.weather[0].main)} 
                 alt={weatherData.weather[0].main} 
-                style={{ width: '200px', height: '200px' }}
+                style={{ width: '300px', height: '200px' }}
                 />
                 <p>{weatherData.weather[0].main}</p>
               </>

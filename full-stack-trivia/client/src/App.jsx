@@ -1,57 +1,88 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vitejs.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
-
-// frontend/src/App.jsx
-
 import React, { useEffect, useState } from 'react';
+import './App.css'
 
 function App() {
-  const [data, setData] = useState(null);
+  const [questionData, setQuestionData] = useState(null);
+
+  // useEffect(() => {
+  //   fetch('/api')
+  //     .then(response => response.json())
+  //     .then(data => setData(data.message));
+  // }, []);
+
+
+
+  // useEffect(() => {
+    
+  //     console.log('useEffect is triggered')
+  //     fetch('http://localhost:5005/', {
+  //       headers: {
+  //         "Content-Type": "application/json"
+  //       }
+  //     })
+  //       .then((res) => {
+  //         console.log(res);
+  //         return res.json()})
+  //       .then((data) => {
+  //         console.log(data); 
+  //         setQuestionData(data)})
+  //       .catch((err) => console.log(err));
+    
+  // }, []);
 
   useEffect(() => {
-    fetch('/api')
-      .then(response => response.json())
-      .then(data => setData(data.message));
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/api/questions', {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+        const {results} = await res.json();
+        setQuestionData(results);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  return (
-    <div>
-      <h1>{data ? data : 'Loading...'}</h1>
-    </div>
-  );
+  
+
+//   return (
+//     <div>
+//       {/* <h1>{data ? data : 'Loading...'}</h1> */}
+//       <p>Questions</p>
+//       {data ? (
+//         <>
+//           <p>{data.results}</p>
+//         </>
+//       ) : (
+//         <p>Loading data...</p>
+//       )}
+//     </div>
+//   );
+// }
+console.log("test", questionData);
+   return (
+      <div>
+        <p>Questions</p>
+        {questionData ? (
+          questionData.map((question, index) => (
+            <div key={index}>
+              <p>Category: {question.category}</p>
+              <p>Question: {question.question}</p>
+              <p>Correct Answer: {question.correct_answer}</p>
+              <p>Incorrect Answers: {question.incorrect_answers.join(', ')}</p>
+            </div>
+          ))
+        ) : (
+          <p>Loading data...</p>
+        )}
+      </div>
+    );
+
 }
 
 export default App;

@@ -20,6 +20,12 @@ Clone this repository using the HTTPS URL
 git clone https://github.com/jsnorek/techtonica-assignments.git
 ```
 
+Change directory into the recipe page directory
+
+```
+cd ../recipe_page
+```
+
 Open the HTML file in a local web browser
 
 ```

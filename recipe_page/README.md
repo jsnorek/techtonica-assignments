@@ -28,7 +28,7 @@ open index.html
 
 ### Demo
 
-![Screenshot]()
+<img width="1492" alt="Screenshot 2024-09-03 at 8 42 39 AM" src="https://github.com/user-attachments/assets/5c050475-9989-4c35-8e27-a586d39b4170">
 
 
 ## Built With

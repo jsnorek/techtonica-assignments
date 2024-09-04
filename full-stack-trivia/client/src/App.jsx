@@ -60,7 +60,7 @@ function App() {
       setQuestion(newQuestion);
     } else {
       setGameOver(true);
-      window.alert("game over")
+      window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
     }
   };
 
@@ -70,6 +70,7 @@ function App() {
   return (
     <div>
       <h1>Questions</h1>
+      <h3>True or False?</h3>
       {question && <h3> {question.question}</h3>}
       <form onSubmit={onSubmit}>
         <input
@@ -78,6 +79,8 @@ function App() {
           onChange={(e) => setAnswer(e.target.value)}
         />
         <button type="submit">Submit</button>
+        <p>Right Answers: {rightAnswer}</p>
+        <p>Wrong Answers: {wrongAnswer}</p>
       </form>
 
       {/* {questionData ? (

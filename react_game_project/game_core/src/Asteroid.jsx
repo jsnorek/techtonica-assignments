@@ -7,7 +7,7 @@ function Asteroid({position, setScore}) {
   //asteroid holds the "set" position of the asteroid
   //useState is creating the default position of asteroid
   const [asteroid, setAsteroid] = useState({ x: generator(500), y: generator(700)});
-  const [gameOver, setGameOver] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
   //create a random number using max boundary as a way to randomly position asteroids
   function generator(maxBoundary) {
     const randomNum = Math.floor(Math.random() * (maxBoundary + 1));
@@ -24,7 +24,7 @@ function Asteroid({position, setScore}) {
     if(asteroid.y >= shipY && (asteroid.x <= position + 50 && asteroid.x >= position - 50)) {
       console.log("game over");
       //if asteroid hits ship from line 24, then gameOver state equals 1 and setScore changes to add 100 to score
-      if(gameOver === 0) {
+      if(gameOver == false) {
       setScore((prev) => {
         return prev += 100;
       });}
@@ -38,7 +38,7 @@ function Asteroid({position, setScore}) {
     console.log(asteroid.y);
     console.log(window.innerHeight);
    //checks if gameOver is still 0 after each asteroid movement, holds the same score
-    if (gameOver === 0) {
+    if (gameOver == false) {
     setAsteroid((prev) => {
       
       //this stops interval when asteroid hits the bottom of the window
@@ -46,7 +46,7 @@ function Asteroid({position, setScore}) {
         console.log("passed window");
         clearInterval(interval);
         //sets gameover to 1 so it stops all above functions that rely on gameOver === 0, esentially stopping the game
-        setGameOver(1);
+        setGameOver(true);
         //stops asteroid movement
         return {
           ...prev,

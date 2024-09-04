@@ -68,7 +68,7 @@ function App() {
   // console.log(answerCount, "count")
   console.log("right", rightAnswer, "wrong", wrongAnswer);
   return (
-    <div>
+    <div className="gameDisplay">
       <h1>Questions</h1>
       <h3>True or False?</h3>
       {question && <h3> {question.question}</h3>}
@@ -81,6 +81,7 @@ function App() {
         <button type="submit">Submit</button>
         <p>Right Answers: {rightAnswer}</p>
         <p>Wrong Answers: {wrongAnswer}</p>
+        <p>Total Responses: {answerCount}</p>
       </form>
 
       {/* {questionData ? (

@@ -11,11 +11,12 @@ const app = express();
 //Set the port that you want the server to run on
 const PORT = process.env.PORT || 5003;
 
+//middleware
 app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+//api key
 const api_key = process.env.api_key
 
 //creates an endpoint for the route /api
@@ -27,7 +28,6 @@ app.get('/', async (req, res) => {
     const weatherData = await rawData.json()
 
   res.send(weatherData)
-//   res.json({ message: 'Hello from ExpressJS' });
 });
 
 app.get('/location/:location', async (req, res) => {

@@ -14,9 +14,7 @@ function App() {
 
   //event handler to handle location change
   const handleInputChange = (e) => {
-    // console.log("handle input works")
     setLocation(e.target.value);
-    // console.log({location});
   };
 
   //to get weather image based on what data is coming from api
@@ -35,9 +33,6 @@ function App() {
     }
   };
 
- //to change image depending on pulled weather data from api
-//  const weatherImage = weatherData.weather ? weatherImages[weatherData.weather[0].main] : null;
-
   //to run the search function and pull data when the "enter" button is clicked 
   const handleKeyDown = (e) => {
   //if true, call the search function
@@ -46,6 +41,7 @@ function App() {
       search();
     }
   };
+
   const search = async () => {
     //to prevent error when search bar is executed while being empty
     if(location.trim())
@@ -100,9 +96,8 @@ function App() {
           <div className='weather-stats'>
               {weatherData ? (
               <>
-                <h2>{weatherData.name}</h2>
+                <h2>{weatherData.name}</h2> 
                 <p>{Math.floor(weatherData.main.temp)}°F</p>
-                {/* <p>Description: {weatherData.weather[0].description}</p> */}
                 <p>Feels like : {Math.floor(weatherData.main.feels_like)}°F</p>
                 <p>Humidity : {weatherData.main.humidity}%</p>
                 <p>Pressure : {weatherData.main.pressure}</p>

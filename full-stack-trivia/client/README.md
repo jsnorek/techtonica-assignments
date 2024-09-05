@@ -40,6 +40,7 @@ npm run dev
 Open your local web browser
 
 ### Demo
+![Screenshot 2024-09-05 at 8 48 12 AM](https://github.com/user-attachments/assets/ee1ff14b-cf65-4669-925b-a7b6400ecc36)
 
 ## Built With
 

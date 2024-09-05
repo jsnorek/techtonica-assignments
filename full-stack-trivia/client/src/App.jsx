@@ -9,6 +9,7 @@ function App() {
   const [wrongAnswer, setWrongAnswer] = useState(0);
   const [rightAnswer, setRightAnswer] = useState(0);
   const [gameOver, setGameOver] = useState(false);
+  const [winLoseMessage, setWinLoseMessage] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,7 +62,14 @@ function App() {
     } else {
       setGameOver(true);
       window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
-    }
+      if (rightAnswer > wrongAnswer) {
+        setWinLoseMessage("You win!");
+      } else if (wrongAnswer > rightAnswer) {
+        setWinLoseMessage("You lose!");
+      } else {
+        setWinLoseMessage("Error")
+      }
+    } 
   };
 
   // console.log("test", questionData);
@@ -79,9 +87,11 @@ function App() {
           onChange={(e) => setAnswer(e.target.value)}
         />
         <button type="submit">Submit</button>
-        <p>Right Answers: {rightAnswer}</p>
-        <p>Wrong Answers: {wrongAnswer}</p>
-        <p>Total Responses: {answerCount}</p>
+        <div className="counts">
+          <p>Right Answers: {rightAnswer}</p>
+          <p>Wrong Answers: {wrongAnswer}</p>
+          <p>Total Responses: {answerCount}</p>
+        </div>
       </form>
 
       {/* {questionData ? (

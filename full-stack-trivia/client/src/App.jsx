@@ -19,16 +19,32 @@ function App() {
             "Content-Type": "application/json",
           },
         });
-        const { results } = await res.json();
+        const {results} = await res.json();
+        console.log(results)
         setQuestionData(results);
         setQuestion(results[0]);
       } catch (err) {
         console.error(err);
       }
     };
+    fetchData()
+  },[])
 
-    fetchData();
-  }, []);
+  useEffect(() => {
+      // setGameOver(true);
+      if (gameOver) {
+        // window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
+        if (rightAnswer > wrongAnswer) {
+          setWinLoseMessage("You win!");
+        } else if (wrongAnswer > rightAnswer) {
+          setWinLoseMessage("You lose!");
+        } else {
+          setWinLoseMessage("Error")
+        }
+      }
+  }, [answerCount, rightAnswer, wrongAnswer, gameOver]);
+
+ 
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -53,23 +69,33 @@ function App() {
         return prevCount + 1
       })
     }
-    
-    console.log(answerCount, "answer count")
 
-    if (questionData.length > answerCount + 1) {
+
+    console.log(answerCount, "answer count")
+    
+    if (questionData.length > answerCount) {
       const newQuestion = questionData[answerCount + 1];
       setQuestion(newQuestion);
-    } else {
+    }
+
+    if (answerCount === 4)
       setGameOver(true);
-      window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
-      if (rightAnswer > wrongAnswer) {
-        setWinLoseMessage("You win!");
-      } else if (wrongAnswer > rightAnswer) {
-        setWinLoseMessage("You lose!");
-      } else {
-        setWinLoseMessage("Error")
-      }
-    } 
+
+
+    // if (questionData.length > answerCount + 1) {
+    //   const newQuestion = questionData[answerCount + 1];
+    //   setQuestion(newQuestion);
+    // } else {
+    //   setGameOver(true);
+    //   window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
+    //   if (rightAnswer > wrongAnswer) {
+    //     setWinLoseMessage("You win!");
+    //   } else if (wrongAnswer > rightAnswer) {
+    //     setWinLoseMessage("You lose!");
+    //   } else {
+    //     setWinLoseMessage("Error")
+    //   }
+    // } 
   };
 
   // console.log("test", questionData);

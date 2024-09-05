@@ -19,27 +19,30 @@ function App() {
             "Content-Type": "application/json",
           },
         });
-        const { results } = await res.json();
+        const {results} = await res.json();
+        console.log(results)
         setQuestionData(results);
         setQuestion(results[0]);
       } catch (err) {
         console.error(err);
       }
     };
-    const gameOverMessage = async (answerCount, rightAnswer, wrongAnswer) => {
+    fetchData()
+  },[])
+
+  useEffect(() => {
       // setGameOver(true);
-      // window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
-      if (rightAnswer > wrongAnswer) {
-        setWinLoseMessage("You win!");
-      } else if (wrongAnswer > rightAnswer) {
-        setWinLoseMessage("You lose!");
-      } else {
-        setWinLoseMessage("Error")
+      if (gameOver) {
+        // window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
+        if (rightAnswer > wrongAnswer) {
+          setWinLoseMessage("You win!");
+        } else if (wrongAnswer > rightAnswer) {
+          setWinLoseMessage("You lose!");
+        } else {
+          setWinLoseMessage("Error")
+        }
       }
-    };
-    gameOverMessage();
-    fetchData();
-  }, [answerCount, rightAnswer, wrongAnswer]);
+  }, [answerCount, rightAnswer, wrongAnswer, gameOver]);
 
  
 
@@ -66,13 +69,18 @@ function App() {
         return prevCount + 1
       })
     }
-    
+
+
     console.log(answerCount, "answer count")
     
     if (questionData.length > answerCount) {
-      const newQuestion = questionData[answerCount];
+      const newQuestion = questionData[answerCount + 1];
       setQuestion(newQuestion);
     }
+
+    if (answerCount === 4)
+      setGameOver(true);
+
 
     // if (questionData.length > answerCount + 1) {
     //   const newQuestion = questionData[answerCount + 1];

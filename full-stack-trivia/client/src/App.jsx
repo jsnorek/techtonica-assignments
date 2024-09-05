@@ -80,22 +80,6 @@ function App() {
 
     if (answerCount === 4)
       setGameOver(true);
-
-
-    // if (questionData.length > answerCount + 1) {
-    //   const newQuestion = questionData[answerCount + 1];
-    //   setQuestion(newQuestion);
-    // } else {
-    //   setGameOver(true);
-    //   window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
-    //   if (rightAnswer > wrongAnswer) {
-    //     setWinLoseMessage("You win!");
-    //   } else if (wrongAnswer > rightAnswer) {
-    //     setWinLoseMessage("You lose!");
-    //   } else {
-    //     setWinLoseMessage("Error")
-    //   }
-    // } 
   };
 
   // console.log("test", questionData);
@@ -120,19 +104,6 @@ function App() {
           <p className="message">{winLoseMessage}</p>
         </div>
       </form>
-
-      {/* {questionData ? (
-          questionData.map((question, index) => (
-            <div key={index}>
-              <p>Category: {question.category}</p>
-              <p>Question: {question.question}</p>
-              <p>Correct Answer: {question.correct_answer}</p>
-              <p>Incorrect Answers: {question.incorrect_answers.join(', ')}</p>
-            </div>
-          ))
-        ) : (
-          <p>Loading data...</p>
-        )} */}
     </div>
   );
 }

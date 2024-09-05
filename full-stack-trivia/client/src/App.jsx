@@ -26,9 +26,22 @@ function App() {
         console.error(err);
       }
     };
-
+    const gameOverMessage = async (answerCount, rightAnswer, wrongAnswer) => {
+      // setGameOver(true);
+      // window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
+      if (rightAnswer > wrongAnswer) {
+        setWinLoseMessage("You win!");
+      } else if (wrongAnswer > rightAnswer) {
+        setWinLoseMessage("You lose!");
+      } else {
+        setWinLoseMessage("Error")
+      }
+    };
+    gameOverMessage();
     fetchData();
-  }, []);
+  }, [answerCount, rightAnswer, wrongAnswer]);
+
+ 
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -55,21 +68,26 @@ function App() {
     }
     
     console.log(answerCount, "answer count")
-
-    if (questionData.length > answerCount + 1) {
-      const newQuestion = questionData[answerCount + 1];
+    
+    if (questionData.length > answerCount) {
+      const newQuestion = questionData[answerCount];
       setQuestion(newQuestion);
-    } else {
-      setGameOver(true);
-      window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
-      if (rightAnswer > wrongAnswer) {
-        setWinLoseMessage("You win!");
-      } else if (wrongAnswer > rightAnswer) {
-        setWinLoseMessage("You lose!");
-      } else {
-        setWinLoseMessage("Error")
-      }
-    } 
+    }
+
+    // if (questionData.length > answerCount + 1) {
+    //   const newQuestion = questionData[answerCount + 1];
+    //   setQuestion(newQuestion);
+    // } else {
+    //   setGameOver(true);
+    //   window.alert(`game over! you got ${rightAnswer} question(s) right and ${wrongAnswer} wrong.`)
+    //   if (rightAnswer > wrongAnswer) {
+    //     setWinLoseMessage("You win!");
+    //   } else if (wrongAnswer > rightAnswer) {
+    //     setWinLoseMessage("You lose!");
+    //   } else {
+    //     setWinLoseMessage("Error")
+    //   }
+    // } 
   };
 
   // console.log("test", questionData);

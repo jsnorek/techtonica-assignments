@@ -117,7 +117,7 @@ function App() {
           <p>Right: {rightAnswer}</p>
           <p>Wrong: {wrongAnswer}</p>
           <p>Total Responses: {answerCount}</p>
-          <p>{winLoseMessage}</p>
+          <p className="message">{winLoseMessage}</p>
         </div>
       </form>
 

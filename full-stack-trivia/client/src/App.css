@@ -72,6 +72,19 @@ p {
   margin-top: 20px;
 }
 
+.message {
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  transition: width 1s;
+  background-image: linear-gradient(rgb(164, 246, 251), rgb(255, 192, 208));
+  border: 2px solid black;
+}
+
+.message:hover {
+  width: 100px
+}
+
 
 
 

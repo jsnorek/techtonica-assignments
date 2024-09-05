@@ -88,8 +88,8 @@ function App() {
         />
         <button type="submit">Submit</button>
         <div className="counts">
-          <p>Right Answers: {rightAnswer}</p>
-          <p>Wrong Answers: {wrongAnswer}</p>
+          <p>Right: {rightAnswer}</p>
+          <p>Wrong: {wrongAnswer}</p>
           <p>Total Responses: {answerCount}</p>
         </div>
       </form>

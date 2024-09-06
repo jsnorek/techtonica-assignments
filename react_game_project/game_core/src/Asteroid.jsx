@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 //position here refers to the position of the ship. both position and setScore are pulled from App
-function Asteroid({position, setScore}) {
+function Asteroid({shipPosition, setScore}) {
   //console.log("tester");
 
   //asteroid holds the "set" position of the asteroid
@@ -21,7 +21,7 @@ function Asteroid({position, setScore}) {
     //end of the browser window
     const shipY = window.innerHeight - 50;
     //checking if asteroid reaches bottom of browser window, the rest is checking the position of the asteroid and if they've collided
-    if(asteroid.y >= shipY && (asteroid.x <= position + 50 && asteroid.x >= position - 50)) {
+    if(asteroid.y >= shipY && (asteroid.x <= shipPosition + 50 && asteroid.x >= shipPosition - 50)) {
       console.log("game over");
       //if asteroid hits ship from line 24, then gameOver state equals 1 and setScore changes to add 100 to score
       if(gameOver == false) {
@@ -30,7 +30,7 @@ function Asteroid({position, setScore}) {
       });}
     }
     //useState variable/dependencies are added to the [] for recall ability
-  }, [asteroid, position, setScore])
+  }, [asteroid, shipPosition, setScore])
   
   //this useEffect moves the asteroid and stops movement if it hits the bottom of screen
   useEffect(() => {
@@ -48,10 +48,7 @@ function Asteroid({position, setScore}) {
         //sets gameover to 1 so it stops all above functions that rely on gameOver === 0, esentially stopping the game
         setGameOver(true);
         //stops asteroid movement
-        return {
-          ...prev,
-          y: prev.y
-        }
+        return null;
       }
       //moves asteroid down the y axis in increments of 10  
       return {

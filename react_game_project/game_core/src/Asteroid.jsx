@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 //position here refers to the position of the ship. both position and setScore are pulled from App
 function Asteroid({shipPosition, setScore}) {
   //console.log("tester");
+  const [visible, setVisible] = useState(true);
 
   //asteroid holds the "set" position of the asteroid
   //useState is creating the default position of asteroid
@@ -48,7 +49,7 @@ function Asteroid({shipPosition, setScore}) {
         //sets gameover to 1 so it stops all above functions that rely on gameOver === 0, esentially stopping the game
         setGameOver(true);
         //stops asteroid movement
-        return null;
+        setVisible(false);
       }
       //moves asteroid down the y axis in increments of 10  
       return {
@@ -57,8 +58,13 @@ function Asteroid({shipPosition, setScore}) {
       }
     }) }
   }, 1000)
-  }, [])
+  }, [visible, gameOver]); //why do you need this dependency array?
   //setting asteroid to random position with style 
+  
+  if (!visible) {
+    return null; // Stop rendering the asteroid if not visible
+  }
+  
   return (<div className="asteriods" style={{ top: `${asteroid.y}px`, left: `${asteroid.x}px` }}>
     asteroid
   </div> );

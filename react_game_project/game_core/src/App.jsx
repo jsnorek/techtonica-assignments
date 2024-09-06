@@ -5,18 +5,19 @@ import Counter from "./Counter";
 
 function App() {
   //ship position
-  const [position, setPosition] = useState(0);
+  const [shipPosition, setShipPosition] = useState(0);
+  const [asteroidPosition, setAsteroidPosition] = useState(0);
   //game score
   const [score, setScore] = useState(0);
 
   function handleKeyDown(e) {
     if (e.key === "ArrowLeft") {
-      if (position >= 0) {
-        setPosition((prev) => prev - 10);
+      if (shipPosition >= 0) {
+        setShipPosition((prev) => prev - 10);
       }
     } else if (e.key === "ArrowRight") {
-      if (position <= 500) {
-      setPosition((prev) => prev + 10);
+      if (shipPosition <= 500) {
+      setShipPosition((prev) => prev + 10);
       }
     }
   }
@@ -31,11 +32,11 @@ function App() {
   return (
     <div className="container">
       <Counter score={score} setScore={setScore} />
-      <div className="ship" style={{ transform: `translateX(${position}px)` }}>
+      <div className="ship" style={{ transform: `translateX(${shipPosition}px)` }}>
         ship
       </div>
-      <Asteroid position={position} setScore={setScore}/>
-      <Asteroid position={position} setScore={setScore}/>
+      <Asteroid asteroidPosition={asteroidPosition} setScore={setScore}/>
+      <Asteroid asteroidPosition={asteroidPosition} setScore={setScore}/>
     </div>
   );
 }

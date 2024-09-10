@@ -54,132 +54,261 @@
 
 // export default Form;
 
-import React, { useState, useEffect } from "react";
+// import React, { useState, useReducer } from "react";
+// import { Button, Form } from "react-bootstrap";
+
+// const MyForm = ({ onSaveEvent, editingEvent, onUpdateEvent }) => {
+//   // This is the original State with not initial event
+//   const [event, setEvent] = useState(
+//     editingEvent || {
+//       title: "",
+//       location: "",
+//       eventtime: ""
+//     }
+//   );
+
+//   //create functions that handle the event of the user typing into the form
+//   const handleEventChange = (event) => {
+//     const title = event.target.value;
+//     setEvent((event) => ({ ...event, title }));
+//   };
+
+//   const handlelocationChange = (event) => {
+//     const location = event.target.value;
+//     setEvent((event) => ({ ...event, location }));
+//   };
+
+//   const handleEventtimeChange = (event) => {
+//     const eventtime = event.target.value;
+//     //console.log(iscurrent);
+//     setEvent((event) => ({ ...event, eventtime }));
+//   };
+
+//   const clearForm = () => {
+//     setEvent({ title: "", location: "", eventtime: "" });
+//   };
+
+//   //A function to handle the post request
+//   const postEvent = (newEvent) => {
+//     return fetch("http://localhost:8080/api/events", {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(newEvent)
+//     })
+//       .then((response) => {
+//         return response.json();
+//       })
+//       .then((data) => {
+//         //console.log("From the post ", data);
+//         //I'm sending data to the List of events (the parent) for updating the list
+//         onSaveEvent(data);
+//         //this line just for cleaning the form
+//         clearForm();
+//       });
+//   };
+
+//   //A function to handle the post request
+//   const putEvent = (toEditEvent) => {
+//     return fetch(`http://localhost:8080/api/events/:eventId"`, {
+//       method: "PUT",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify(toEditEvent)
+//     })
+//       .then((response) => {
+//         return response.json();
+//       })
+//       .then((data) => {
+//         onUpdateEvent(data);
+//         //this line just for cleaning the form
+//         clearForm();
+//       });
+//   };
+
+//   //A function to handle the submit in both cases - Post and Put request!
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     if (event.id) {
+//       putEvent(event);
+//     } else {
+//       postEvent(event);
+//     }
+//   };
+
+//   return (
+//     <Form className="form-events" onSubmit={handleSubmit}>
+//       <Form.Group>
+//         <Form.Label>Title</Form.Label>
+//         <input
+//           type="text"
+//           id="add-event-title"
+//           placeholder="Title"
+//           required
+//           value={event.title}
+//           onChange={handleEventChange}
+//         />
+//       </Form.Group>
+//       <Form.Group>
+//         <Form.Label>Location</Form.Label>
+//         <input
+//           type="text"
+//           id="add-event-location"
+//           placeholder="Location"
+//           required
+//           value={event.location}
+//           onChange={handlelocationChange}
+//         />
+//       </Form.Group>
+//       <Form.Group>
+//       <Form.Label>Date</Form.Label>
+//         <input
+//         type={"date"}
+//         id={`add-event-date`}
+//         value={event.eventtime}
+//         onChange={handleEventtimeChange}
+//         label={`What is the date of the event?`}
+//         />
+//         </Form.Group>
+//       <Form.Group>
+//         <Button type="submit" variant="outline-success">
+//           {event.id ? "Edit event" : "Add event"}
+//         </Button>
+//         {event.id ? (
+//           <Button type="button" variant="outline-warning" onClick={clearForm}>
+//             Cancel
+//           </Button>
+//         ) : null}
+//       </Form.Group>
+//     </Form>
+//   );
+// };
+
+// export default MyForm;
+
+import React, { useReducer, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
+const initialState = {
+  title: "",
+  location: "",
+  eventtime: ""
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "SET_TITLE":
+      return { ...state, title: action.payload };
+    case "SET_LOCATION":
+      return { ...state, location: action.payload };
+    case "SET_EVENTTIME":
+      return { ...state, eventtime: action.payload };
+    case "CLEAR_FORM":
+      return initialState;
+    case "SET_EVENT":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const MyForm = ({ onSaveEvent, editingEvent, onUpdateEvent }) => {
-  // This is the original State with not initial event
-  const [event, setEvent] = useState(
-    editingEvent || {
-      title: "",
-      location: "",
-      eventtime: ""
-    }
-  );
+    const [event, dispatch] = useReducer(reducer, editingEvent || initialState);
 
-  //create functions that handle the event of the user typing into the form
-  const handleEventChange = (event) => {
-    const title = event.target.value;
-    setEvent((event) => ({ ...event, title }));
-  };
+    const handleEventChange = (e) => {
+        dispatch({ type: "SET_TITLE", payload: e.target.value });
+    };
 
-  const handlelocationChange = (event) => {
-    const location = event.target.value;
-    setEvent((event) => ({ ...event, location }));
-  };
+    const handlelocationChange = (e) => {
+        dispatch({ type: "SET_LOCATION", payload: e.target.value });
+    };
 
-  const handleEventtimeChange = (event) => {
-    const eventtime = event.target.value;
-    //console.log(iscurrent);
-    setEvent((event) => ({ ...event, eventtime }));
-  };
+    const handleEventtimeChange = (e) => {
+        dispatch({ type: "SET_EVENTTIME", payload: e.target.value });
+    };
 
-  const clearForm = () => {
-    setEvent({ title: "", location: "", eventtime: "" });
-  };
+    const clearForm = () => {
+        dispatch({ type: "CLEAR_FORM" });
+    };
 
-  //A function to handle the post request
-  const postEvent = (newEvent) => {
-    return fetch("http://localhost:8080/api/events", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newEvent)
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        //console.log("From the post ", data);
-        //I'm sending data to the List of events (the parent) for updating the list
-        onSaveEvent(data);
-        //this line just for cleaning the form
-        clearForm();
-      });
-  };
+    const postEvent = (newEvent) => {
+        return fetch("http://localhost:8080/api/events", {
+            method: "POST", 
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newEvent)
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                onSaveEvent(data);
+                clearForm();
+            });
+    };
 
-  //A function to handle the post request
-  const putEvent = (toEditEvent) => {
-    return fetch(`http://localhost:8080/api/events/:eventId"`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(toEditEvent)
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        onUpdateEvent(data);
-        //this line just for cleaning the form
-        clearForm();
-      });
-  };
+    const putEvent = (toEditEvent) => {
+        return fetch(`http://localhost:8080/api/events/:eventId`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(toEditEvent)
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                onUpdateEvent(data);
+                clearForm();
+            });
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (event.id) {
+            putEvent(event);
+        } else {
+            postEvent(event);
+        }
+    };
 
-  //A function to handle the submit in both cases - Post and Put request!
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (event.id) {
-      putEvent(event);
-    } else {
-      postEvent(event);
-    }
-  };
-
-  return (
-    <Form className="form-events" onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Label>Title</Form.Label>
-        <input
-          type="text"
-          id="add-event-title"
-          placeholder="Title"
-          required
-          value={event.title}
-          onChange={handleEventChange}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Location</Form.Label>
-        <input
-          type="text"
-          id="add-event-location"
-          placeholder="Location"
-          required
-          value={event.location}
-          onChange={handlelocationChange}
-        />
-      </Form.Group>
-      <Form.Group>
-      <Form.Label>Date</Form.Label>
-        <input
-        type={"date"}
-        id={`add-event-date`}
-        value={event.eventtime}
-        onChange={handleEventtimeChange}
-        label={`What is the date of the event?`}
-        />
-        </Form.Group>
-      <Form.Group>
-        <Button type="submit" variant="outline-success">
-          {event.id ? "Edit event" : "Add event"}
-        </Button>
-        {event.id ? (
-          <Button type="button" variant="outline-warning" onClick={clearForm}>
-            Cancel
-          </Button>
-        ) : null}
-      </Form.Group>
-    </Form>
-  );
+    return(
+        <Form className="form-events" onSubmit={handleSubmit}>
+            <Form.Group>
+                <Form.Label>Title</Form.Label>
+                <input
+                    type="text"
+                    id="add-event-title"
+                    placeholder="Title"
+                    required
+                    value={event.title}
+                    onChange={handleEventChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Location</Form.Label>
+                <input
+                    type="text"
+                    id="add-event-location"
+                    placeholder="Location"
+                    required
+                    value={event.location}
+                    onChange={handlelocationChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Form.Label>Date</Form.Label>
+                <input
+                    type="date"
+                    id="add-event-date"
+                    value={event.eventtime}
+                    onChange={handleEventtimeChange}
+                />
+            </Form.Group>
+            <Form.Group>
+                <Button type="submit" variant="outline-success">
+                    {event.id ? "Edit event" : "Add event"}
+                </Button>
+                {event.id ? (
+                    <Button type="button" variant="outline-warning" onClick={clearForm}>
+                        Cancel
+                    </Button>
+                ) : null}
+            </Form.Group>
+        </Form>
+    );
 };
 
 export default MyForm;

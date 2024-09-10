@@ -100,25 +100,25 @@ app.get("/api/events", async (req, res) => {
 });
 
 // create the POST request
-// app.post("/api/events", async (req, res) => {
-//   try {
-//     const newEvent = {
-//       title: req.body.title,
-//       location: req.body.location,
-//       eventtime: req.body.eventtime
-//     };
-//     //console.log([newStudent.firstname, newStudent.lastname, newStudent.iscurrent]);
-//     const result = await db.query(
-//       "INSERT INTO events(title, location, eventtime) VALUES($1, $2, $3) RETURNING *",
-//       [newEvent.title, newEvent.location, newEvent.eventtime]
-//     );
-//     console.log(result.rows[0]);
-//     res.json(result.rows[0]);
-//   } catch (e) {
-//     console.log(e);
-//     return res.status(400).json({ e });
-//   }
-// });
+app.post("/api/events", async (req, res) => {
+  try {
+    const newEvent = {
+      title: req.body.title,
+      location: req.body.location,
+      eventtime: req.body.eventtime
+    };
+    //console.log([newEvent.title, newEvent.location, newEvent.eventtime]);
+    const result = await db.query(
+      "INSERT INTO events(title, location, eventtime) VALUES($1, $2, $3) RETURNING *",
+      [newEvent.title, newEvent.location, newEvent.eventtime]
+    );
+    console.log(result.rows[0]);
+    res.json(result.rows[0]);
+  } catch (e) {
+    console.log(e);
+    return res.status(400).json({ e });
+  }
+});
 
 // // delete request for events
 // app.delete("/api/events/:studentId", async (req, res) => {

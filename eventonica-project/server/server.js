@@ -120,20 +120,20 @@ app.post("/api/events", async (req, res) => {
   }
 });
 
-// // delete request for events
-// app.delete("/api/events/:studentId", async (req, res) => {
-//   try {
-//     const studentId = req.params.studentId;
-//     await db.query("DELETE FROM events WHERE id=$1", [studentId]);
-//     console.log("From the delete request-url", studentId);
-//     res.status(200).end();
-//   } catch (e) {
-//     console.log(e);
-//     return res.status(400).json({ e });
-//   }
-// });
+// delete request for events
+app.delete("/api/events/:eventId", async (req, res) => {
+  try {
+    const eventId = req.params.eventId;
+    await db.query("DELETE FROM events WHERE id=$1", [eventId]);
+    console.log("From the delete request-url", eventId);
+    res.status(200).end();
+  } catch (e) {
+    console.log(e);
+    return res.status(400).json({ e });
+  }
+});
 
-// //A put request - Update a student
+// //A put request - Update an event
 app.put("/api/events/:eventId", async (req, res) => {
   //console.log(req.params);
   //This will be the id that I want to find in the DB - the event to be updated
@@ -149,7 +149,6 @@ app.put("/api/events/:eventId", async (req, res) => {
     "In the server, from the react - the event to be edited",
     updatedEvent
   );
-  // UPDATE events SET lastname = "something" WHERE id="16";
   const query = `UPDATE events SET title=$1, location=$2, eventtime=$3 WHERE id=${eventId} RETURNING *`;
   const values = [
     updatedEvent.title,

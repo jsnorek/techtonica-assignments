@@ -20,7 +20,7 @@ function MyNavBar({ searchString, setSearchString }) {
 
   return (
     <>
-      <Navbar bg="dark" variant="dark" sticky="top">
+      <Navbar sticky="top">
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -30,7 +30,7 @@ function MyNavBar({ searchString, setSearchString }) {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          <Nav.Link to='/'>Events</Nav.Link>
+          {/* <Nav.Link to='/'>Events</Nav.Link> */}
           <Navbar.Toggle />
           {/* <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
@@ -38,7 +38,7 @@ function MyNavBar({ searchString, setSearchString }) {
             </Navbar.Text>
           </Navbar.Collapse> */}
           <Navbar className="bg-body-tertiary justify-content-between">
-      <Form inline>
+      {/* <Form inline> */}
         {/* <InputGroup>
           <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
           <Form.Control
@@ -47,7 +47,7 @@ function MyNavBar({ searchString, setSearchString }) {
             aria-describedby="basic-addon1"
           />
         </InputGroup> */}
-      </Form>
+      {/* </Form> */}
       <form id="search">
         <Row>
           <Col xs="auto">
@@ -64,7 +64,6 @@ function MyNavBar({ searchString, setSearchString }) {
         </Row>
       </form>
     </Navbar>
-  );
           
         </Container>
       </Navbar>

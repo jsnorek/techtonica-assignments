@@ -48,7 +48,7 @@ const Event = ({ event, toUpdate, toDelete }) => {
         >
           <ioicons.IoTrash />
         </Button>
-        <Button
+        {/* <Button
           variant="outline-info"
           onClick={() => {
             onUpdate(event);
@@ -57,7 +57,7 @@ const Event = ({ event, toUpdate, toDelete }) => {
         >
           {" "}
           <ioicons.IoSync />
-        </Button>
+        </Button> */}
       </Card.Body>
     </Card>
   );

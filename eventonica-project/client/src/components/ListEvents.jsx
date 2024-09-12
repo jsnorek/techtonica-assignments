@@ -3,34 +3,56 @@ import * as ioicons from "react-icons/io5";
 import MyForm from "./Form";
 import Event from "./Event";
 
-const ListEvents = () => {
+const ListEvents = ({searchString}) => {
   // this is my original state with an array of events
-  const [events, setevents] = useState([]);
+  const [events, setEvents] = useState([]);
 
   //this is the state needed for the UpdateRequest
   const [editingEvents, setEditingEvents] = useState(null);
 
-  const loadEvents = () => {
+  const loadEvents = async () => {
+    console.log('loadEvents triggered');
     // A function to fetch the list of events that will be load anytime that list change
-    fetch("http://localhost:8080/api/events")
+    await fetch("http://localhost:8080/api/events")
       .then((response) => response.json())
       .then((events) => {
-        setevents(events);
+        setEvents(events);
       });
   };
 
+  const filterEvents = () => {
+    console.log('filterevents triggered')
+    if(searchString != '') {
+        const filteredEvent = events.filter(event => {
+            // const lowerCaseSearch = searchString.toLowerCase();
+            if(event.title.toLowerCase().includes(searchString.toLowerCase())) {
+                return true;
+            }
+        });
+        console.log({filteredEvent});
+        setEvents(filteredEvent);
+      }
+  }
+
   useEffect(() => {
-    loadEvents();
-  }, [events]);
+    console.log('useEffect triggered');
+    if(events.length == 0 && searchString == '') {
+        loadEvents();
+    }
+}, [events]);
+
+    useEffect(() => {
+        filterEvents();
+    }, [searchString]);
 
   const onSaveEvent = (newEvent) => {
     //console.log(newEvent, "From the parent - List of events");
-    setevents((events) => [...events, newEvent]);
+    setEvents((events) => [...events, newEvent]);
   };
 
-  //A function to control the update in the parent (student component)
+  //A function to control the update in the parent (event component)
   const updateEvent = (savedEvent) => {
-    // console.log("Line 29 savedStudent", savedStudent);
+    // console.log("Line 29 savedEvent", savedEvent);
     // This function should update the whole list of events -
     loadEvents();
   };
@@ -53,6 +75,7 @@ const ListEvents = () => {
     //console.log(toUpdateEvent);
     setEditingEvents(toUpdateEvent);
   };
+  
 
   return (
     <div className="mybody">

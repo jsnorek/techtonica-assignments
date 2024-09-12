@@ -3,12 +3,21 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import InputGroup from 'react-bootstrap/InputGroup';
+// import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Logo from "../../assets/BlueTechtonicaWord.png";
+import { useState } from 'react';
 
-function MyNavBar(props) {
+function MyNavBar({ searchString, setSearchString }) {
+
+  const [input, setInput] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchString(input);
+  }
+
   return (
     <>
       <Navbar bg="dark" variant="dark" sticky="top">
@@ -21,7 +30,7 @@ function MyNavBar(props) {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          <Nav.Link>Your Link</Nav.Link>
+          <Nav.Link to='/'>Events</Nav.Link>
           <Navbar.Toggle />
           {/* <Navbar.Collapse className="justify-content-end">
             <Navbar.Text>
@@ -39,20 +48,21 @@ function MyNavBar(props) {
           />
         </InputGroup> */}
       </Form>
-      <Form inline>
+      <form id="search">
         <Row>
           <Col xs="auto">
             <Form.Control
-              type="text"
+              type="search"
               placeholder="Search"
               className=" mr-sm-2"
+              onChange={(e) => {setInput(e.target.value);}}
             />
           </Col>
           <Col xs="auto">
-            <Button type="submit">Submit</Button>
+            <Button onClick={(e) => setSearchString(input)}>Submit</Button>
           </Col>
         </Row>
-      </Form>
+      </form>
     </Navbar>
   );
           

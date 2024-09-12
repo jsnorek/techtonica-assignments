@@ -99,6 +99,19 @@ app.get("/api/events", async (req, res) => {
   }
 });
 
+app.get("/api/search", async (req, res) => {
+  const searchTerm = req.query.q;
+  try {
+    const { rows: events } = await db.query(
+      "SELECT * FROM events WHERE title ILIKE $1 OR location ILIKE $1 OR ILIKE $1 eventtime",
+      [`%${searchTerm}%`]
+    );
+    res.send(events);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
 // create the POST request
 app.post("/api/events", async (req, res) => {
   try {

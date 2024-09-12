@@ -1,6 +1,6 @@
 import { test, expect, vi } from "vitest";
-import { render, fireEvent } from '@testing-library/react';
-import { Form } from  "./components/Form";
+import { render } from '@testing-library/react';
+import Form from  "../Form";
 
 test('renders Form component correctly', () => {
     const { getByPlaceholderText, getByText } = render(<Form />);

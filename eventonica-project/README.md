@@ -1,5 +1,11 @@
 # Description
-This project creates full stack app that lists events captured in your database. You will be able to add, delete, and search for events.
+This project is a full stack app built with React, Vite, Node.js, and PostgresSQL that lists events captured in your database. You will be able to add, delete, and search for events.
+
+## Technologies
+- **Frontend**: React Vite, Bootstrap
+- **Backend**: Node.js, Express
+- **Database**: PostgresSQL
+- **Testing**: Vitest, React Testing Library (RTL)
 
 # Quick-setup 
 
@@ -8,7 +14,7 @@ This project creates full stack app that lists events captured in your database.
 
 ### Your First Express and React App with a DB connection
 
-1. Go to your source directory in your terminal and run the command `git clone git@github.com:jsnorek/techtonica-assignments.git 
+1. Go to your source directory in your terminal and clone the respository by running the command `git clone git@github.com:jsnorek/techtonica-assignments.git` 
 
 2. To clean your folder from the owner's git, run the command `rm -rf .git` inside the folder <NAMENEWDIRECTORY>. Then re-initialize as the owner with `git init`.
 
@@ -38,9 +44,10 @@ Your DB should look like this inside the psql terminal
 * The instructions for [pg](https://node-postgres.com/apis/pool)  
 * Setup [postgres correctly](https://github.com/Techtonica/curriculum/blob/main/databases/installing-postgresql.md).
 
-## After Initial Setup
+## Running the App
 
-To run the program in your localhost browser, run the command `npm run dev` and click on the link to view in browser.
+To run the program in your localhost browser, nagivate to your server folder (`cd server`) and run the command `npm run dev` and click on the link to view in browser.
 
-To run debugging tests, open a new terminal and cd into your client folder and run the command `npm run test`
+## Testing
+To run debugging tests, open a new terminal and navigate into your client folder (`cd client`) and run the command `npm run test`
 

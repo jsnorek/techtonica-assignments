@@ -30,41 +30,24 @@ function MyNavBar({ searchString, setSearchString }) {
               alt="React Bootstrap logo"
             />
           </Navbar.Brand>
-          {/* <Nav.Link to='/'>Events</Nav.Link> */}
           <Navbar.Toggle />
-          {/* <Navbar.Collapse className="justify-content-end">
-            <Navbar.Text>
-              Signed in as: <a href="#login">Cristina Rodriguez</a>
-            </Navbar.Text>
-          </Navbar.Collapse> */}
           <Navbar className="bg-body-tertiary justify-content-between">
-      {/* <Form inline> */}
-        {/* <InputGroup>
-          <InputGroup.Text id="basic-addon1">@</InputGroup.Text>
-          <Form.Control
-            placeholder="Username"
-            aria-label="Username"
-            aria-describedby="basic-addon1"
-          />
-        </InputGroup> */}
-      {/* </Form> */}
-      <form id="search">
-        <Row>
-          <Col xs="auto">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className=" mr-sm-2"
-              onChange={(e) => {setInput(e.target.value);}}
-            />
-          </Col>
-          <Col xs="auto">
-            <Button onClick={(e) => setSearchString(input)}>Submit</Button>
-          </Col>
-        </Row>
-      </form>
-    </Navbar>
-          
+            <form id="search">
+              <Row>
+                <Col xs="auto">
+                  <Form.Control
+                    type="search"
+                    placeholder="Search"
+                    className=" mr-sm-2"
+                    onChange={(e) => {setInput(e.target.value);}}
+                  />
+                </Col>
+                <Col xs="auto">
+                  <Button onClick={(e) => setSearchString(input)}>Submit</Button>
+                </Col>
+              </Row>
+            </form>
+          </Navbar>
         </Container>
       </Navbar>
     </>

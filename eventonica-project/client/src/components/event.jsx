@@ -1,24 +1,3 @@
-// import Card from 'react-bootstrap/Card';
-
-// const EventCard = (props) => {
-//     console.log('eventtime', props.eventtime);
-//     // console.log('title', props.title);
-
-//     return (
-//         <Card style={{ width: '18rem' }}>
-//             <Card.Body>
-//                 <Card.Title>{props.title}</Card.Title>
-//                 <Card.Subtitle className="mb-2 text-muted">Date: {props.eventtime ? props.eventtime : "TBD"}</Card.Subtitle>
-//                 <Card.Text>
-//                     Location: {props.location}
-//                 </Card.Text>
-//             </Card.Body>
-//         </Card>
-//     )
-// }
-
-// export default EventCard;
-
 // eslint-disable-next-line no-unused-vars
 import React from "react";
 import Card from "react-bootstrap/Card";
@@ -49,16 +28,6 @@ const Event = ({ event, toUpdate, toDelete }) => {
         >
           <ioicons.IoTrash />
         </Button>
-        {/* <Button
-          variant="outline-info"
-          onClick={() => {
-            onUpdate(event);
-          }}
-          style={{ padding: "0.6em" }}
-        >
-          {" "}
-          <ioicons.IoSync />
-        </Button> */}
       </Card.Body>
     </Card>
   );

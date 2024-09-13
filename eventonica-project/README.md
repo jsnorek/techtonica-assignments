@@ -4,6 +4,7 @@ This project creates full stack app that lists events captured in your database.
 # Quick-setup 
 
 #### Once you have successfully setup this template and initial database, the view will look like this:
+<img width="756" alt="Screenshot 2024-09-13 at 12 20 56 PM" src="https://github.com/user-attachments/assets/6c52be43-014d-401d-907e-9c6537dadb7e">
 
 ### Your First Express and React App with a DB connection
 
@@ -37,5 +38,9 @@ Your DB should look like this inside the psql terminal
 * The instructions for [pg](https://node-postgres.com/apis/pool)  
 * Setup [postgres correctly](https://github.com/Techtonica/curriculum/blob/main/databases/installing-postgresql.md).
 
+## After Initial Setup
 
+To run the program in your localhost browser, run the command `npm run dev` and click on the link to view in browser.
+
+To run debugging tests, open a new terminal and cd into your client folder and run the command `npm run test`
 

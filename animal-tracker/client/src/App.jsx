@@ -37,20 +37,20 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function App() {
-    const [events, setEvents] = useState([]);
+    const [speciesList, setSpeciesList] = useState([]);
 
     useEffect(() => {
         axios.get('/api/species')
-            .then(response => setEvents(response.data))
+            .then(response => setSpeciesList(response.data))
             .catch(error => console.error(error));
     }, []);
 
     return (
         <div>
-            <h1>Events</h1>
+            <h1>Animal Species</h1>
             <ul>
-                {events.map(event => (
-                    <li key={event.id}>{event.name} - {event.date} - {event.location}</li>
+                {speciesList.map(species => (
+                    <li key={species.id}>{species.common_name} - {species.scientific_name} - {species.estimated_population} - {species.conservation_status}</li>
                 ))}
             </ul>
         </div>

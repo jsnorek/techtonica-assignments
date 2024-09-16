@@ -34,25 +34,27 @@
 
 // export default App
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import SpeciesList from './components/SpeciesList';
 
 function App() {
-    const [speciesList, setSpeciesList] = useState([]);
+    // const [speciesList, setSpeciesList] = useState([]);
 
-    useEffect(() => {
-        axios.get('/api/species')
-            .then(response => setSpeciesList(response.data))
-            .catch(error => console.error(error));
-    }, []);
+    // useEffect(() => {
+    //     axios.get('/api/species')
+    //         .then(response => setSpeciesList(response.data))
+    //         .catch(error => console.error(error));
+    // }, []);
 
     return (
         <div>
             <h1>Animal Species</h1>
-            <ul>
+            {/* <ul>
                 {speciesList.map(species => (
                     <li key={species.id}>{species.common_name} - {species.scientific_name} - {species.estimated_population} - {species.conservation_status}</li>
                 ))}
-            </ul>
+            </ul> */}
+            <SpeciesList />
         </div>
     );
 }

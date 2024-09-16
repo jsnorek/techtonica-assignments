@@ -149,6 +149,19 @@ app.put("/api/species/:species_id", async (req, res) => {
     }
 });
 
+//delete a species row
+app.delete("/api/species/:species_id", async (req, res) => {
+    try {
+        const species_id = req.params.species_id;
+        await db.query("DELETE FROM species WHERE id=$1", [species_id]);
+        console.log("From the delete request-url", species_id);
+        res.status(200).end();
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
+
 
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);

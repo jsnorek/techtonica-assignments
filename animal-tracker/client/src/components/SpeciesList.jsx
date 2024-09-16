@@ -11,7 +11,7 @@ const SpeciesList = () => {
     }, []);
 
     return (
-        <div className="listSpecies">
+        <div className="speciesList">
             <h2>Tracked Species</h2>
             <ul>
                 {speciesList.map(species => (

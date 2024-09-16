@@ -36,6 +36,7 @@
 import React, { useEffect, useState } from 'react';
 // import axios from 'axios';
 import SpeciesList from './components/SpeciesList';
+import SightingsList from './components/SightingsList';
 
 function App() {
     // const [speciesList, setSpeciesList] = useState([]);
@@ -55,6 +56,7 @@ function App() {
                 ))}
             </ul> */}
             <SpeciesList />
+            <SightingsList />
         </div>
     );
 }

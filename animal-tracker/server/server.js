@@ -40,9 +40,10 @@ app.get("/api/species", async (req, res) => {
 app.get("/api/sightings", async (req, res) => {
     try {
         const { rows: sightings } = await db.query(`
-            SELECT sightings.*, individuals.nickname 
+            SELECT sightings.*, individuals.nickname, species.common_name 
             FROM sightings 
             JOIN individuals ON sightings.individual_id = individuals.id
+            JOIN species ON individuals.species_id = species.id
         `);
         res.send(sightings);
     } catch (e) {

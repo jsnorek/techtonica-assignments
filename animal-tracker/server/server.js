@@ -26,11 +26,25 @@ app.get("/", (req, res) => {
     res.json("Hello to your animal sighting server");
 });
 
-// create the get request for events in the endpoint '/api/events'
+// create the get request for species in the endpoint '/api/species'
 app.get("/api/species", async (req, res) => {
     try {
         const { rows: species } = await db.query("SELECT * FROM species");
         res.send(species);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
+// create the get request for sightings that includes the nickname in the individuals table
+app.get("/api/sightings", async (req, res) => {
+    try {
+        const { rows: sightings } = await db.query(`
+            SELECT sightings.*, individuals.nickname 
+            FROM sightings 
+            JOIN individuals ON sightings.individual_id = individuals.id
+        `);
+        res.send(sightings);
     } catch (e) {
         console.log(e);
         return res.status(400).json({ e });

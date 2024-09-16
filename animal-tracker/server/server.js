@@ -52,6 +52,7 @@ app.get("/api/sightings", async (req, res) => {
     }
 });
 
+//adding to the species table
 app.post("/api/species", async (req, res) => {
     try {
         const newSpecies = {
@@ -73,6 +74,7 @@ app.post("/api/species", async (req, res) => {
     }
 });
 
+//adding to the sightings table
 app.post("/api/sightings", async (req, res) => {
     try {
         const newSighting = {
@@ -86,6 +88,26 @@ app.post("/api/sightings", async (req, res) => {
         const result = await db.query(
             "INSERT INTO sightings(sighting_time, individual_id, location, healthy, sighter_email) VALUES($1, $2, $3, $4, $5) RETURNING *",
             [newSighting.sighting_time, newSighting.individual_id, newSighting.location, newSighting.healthy, newSighting.sighter_email]
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
+
+//adding to the individuals table
+app.post("/api/individuals", async (req, res) => {
+    try {
+        const newIndividual = {
+            nickname: req.body.nickname,
+            species_id: req.body.species_id
+        };
+        console.log([newIndividual.nickname, newIndividual.species_id]);
+        const result = await db.query(
+            "INSERT INTO individuals(nickname, species_id) VALUES($1, $2) RETURNING *",
+            [newIndividual.nickname, newIndividual.species_id]
         );
         console.log(result.rows[0]);
         res.json(result.rows[0]);

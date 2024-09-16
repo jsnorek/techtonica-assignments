@@ -117,6 +117,37 @@ app.post("/api/individuals", async (req, res) => {
     }
 });
 
+//update a species row
+app.put("/api/species/:species_id", async (req, res) => {
+    const species_id = req.params.species_id;
+    const updatedSpecies = {
+        common_name: req.body.common_name,
+        scientific_name: req.body.scientific_name,
+        estimated_population: req.body.estimated_population,
+        conservation_status: req.body.conservation_status,
+    };
+    console.log("In the server from the url - the species id", species_id);
+    console.log( "In the server, from the react - the species to be edited", updatedSpecies);
+    const query = `
+        UPDATE species 
+        SET common_name=$1, scientific_name=$2, estimated_population=$3, conservation_status=$4 
+        WHERE id=$5 RETURNING *`; //Instead of directly interpolating species_id into the SQL query (WHERE id=${species_id}), use a placeholder ($5) and pass the species_id as the last value in the values array. This helps prevent SQL injection attacks and ensures the query is executed safely.
+    const values = [
+        updatedSpecies.common_name,
+        updatedSpecies.scientific_name,
+        updatedSpecies.estimated_population,
+        updatedSpecies.conservation_status,
+        species_id
+    ];
+    try {
+        const updated = await db.query(query, values);
+        console.log(updated.rows[0]);
+        res.send(updated.rows[0]);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
 
 
 app.listen(PORT, () => {

@@ -52,6 +52,51 @@ app.get("/api/sightings", async (req, res) => {
     }
 });
 
+app.post("/api/species", async (req, res) => {
+    try {
+        const newSpecies = {
+            common_name: req.body.common_name,
+            scientific_name: req.body.scientific_name,
+            estimated_population: req.body.estimated_population,
+            conservation_status: req.body.conservation_status,
+        };
+        console.log([newSpecies.common_name, newSpecies.scientific_name, newSpecies.estimated_population, newSpecies.conservation_status]);
+        const result = await db.query(
+            "INSERT INTO species(common_name, scientific_name, estimated_population, conservation_status) VALUES($1, $2, $3, $4) RETURNING *",
+            [newSpecies.common_name, newSpecies.scientific_name, newSpecies.estimated_population, newSpecies.conservation_status]
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
+
+app.post("/api/sightings", async (req, res) => {
+    try {
+        const newSighting = {
+            sighting_time: req.body.sighting_time,
+            individual_id: req.body.individual_id,
+            location: req.body.location,
+            healthy: req.body.healthy,
+            sighter_email: req.body.sighter_email
+        };
+        console.log([newSighting.sighting_time, newSighting.individual_id, newSighting.location, newSighting.healthy, newSighting.sighter_email]);
+        const result = await db.query(
+            "INSERT INTO sightings(sighting_time, individual_id, location, healthy, sighter_email) VALUES($1, $2, $3, $4, $5) RETURNING *",
+            [newSighting.sighting_time, newSighting.individual_id, newSighting.location, newSighting.healthy, newSighting.sighter_email]
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+    } catch (e) {
+        console.log(e);
+        return res.status(400).json({ e });
+    }
+});
+
+
+
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);
 });

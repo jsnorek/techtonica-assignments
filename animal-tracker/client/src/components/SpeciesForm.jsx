@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Form = ({ addNewSpecies }) => {
+const SpeciesForm = ({ addNewSpecies }) => {
     //state to track new species
     const [species, setSpecies] = useState({
         common_name: "",
@@ -85,5 +85,5 @@ const Form = ({ addNewSpecies }) => {
 
 };
 
-export default Form;
+export default SpeciesForm;
 

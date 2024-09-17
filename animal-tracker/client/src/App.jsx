@@ -37,7 +37,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SpeciesList from './components/SpeciesList';
 import SightingsList from './components/SightingsList';
-import Form from './components/Form';
+import SpeciesForm from './components/SpeciesForm';
+import IndividualsForm from './components/IndividualsForm';
 
 function App() {
     const [speciesList, setSpeciesList] = useState([]);
@@ -66,7 +67,8 @@ function App() {
             </ul> */}
             <SpeciesList speciesList={speciesList}/>
             <SightingsList />
-            <Form addNewSpecies={addNewSpecies}/>
+            <SpeciesForm addNewSpecies={addNewSpecies}/>
+            <IndividualsForm />
         </div>
     );
 }

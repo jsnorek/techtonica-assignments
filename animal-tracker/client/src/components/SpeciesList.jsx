@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 
-const SpeciesList = () => {
-    const [speciesList, setSpeciesList] = useState([]);
+const SpeciesList = ({ speciesList }) => {
+    // const [speciesList, setSpeciesList] = useState([]);
 
-    useEffect(() => {
-        axios.get('/api/species')
-            .then(response => setSpeciesList(response.data))
-            .catch(error => console.error(error));
-    }, []);
+    // useEffect(() => {
+    //     axios.get('/api/species')
+    //         .then(response => setSpeciesList(response.data))
+    //         .catch(error => console.error(error));
+    // }, []);
 
     return (
         <div className="speciesList">

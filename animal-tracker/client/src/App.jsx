@@ -34,29 +34,39 @@
 
 // export default App
 import React, { useEffect, useState } from 'react';
-// import axios from 'axios';
+import axios from 'axios';
 import SpeciesList from './components/SpeciesList';
 import SightingsList from './components/SightingsList';
+import Form from './components/Form';
 
 function App() {
-    // const [speciesList, setSpeciesList] = useState([]);
+    const [speciesList, setSpeciesList] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get('/api/species')
-    //         .then(response => setSpeciesList(response.data))
-    //         .catch(error => console.error(error));
-    // }, []);
+    //fetch species data
+    useEffect(() => {
+        axios.get('/api/species')
+            .then(response => setSpeciesList(response.data))
+            .catch(error => console.error(error));
+    }, []);
+    //function to add new species to the list
+    const addNewSpecies = (newSpecies) => {
+      console.log("Adding new species to the list: ", newSpecies);
+      setSpeciesList((prevList) => [...prevList, newSpecies])
+      console.log(speciesList);
+    };
+
 
     return (
         <div>
-            <h1>Animal Species</h1>
+            <h1>Animal Tracker</h1>
             {/* <ul>
                 {speciesList.map(species => (
                     <li key={species.id}>{species.common_name} - {species.scientific_name} - {species.estimated_population} - {species.conservation_status}</li>
                 ))}
             </ul> */}
-            <SpeciesList />
+            <SpeciesList speciesList={speciesList}/>
             <SightingsList />
+            <Form addNewSpecies={addNewSpecies}/>
         </div>
     );
 }

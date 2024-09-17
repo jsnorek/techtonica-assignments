@@ -4,12 +4,33 @@ import axios from 'axios';
 const SightingsList = () => {
     const [sightingsList, setsightingsList] = useState([]);
 
-    useEffect(() => {
-        axios.get('api/sightings')
-            .then(response => setsightingsList(response.data))
-            .catch(error => console.error(error));
-            console.log(sightingsList);
-}, []);
+//     useEffect(() => {
+//         axios.get('api/sightings')
+//             .then(response => setsightingsList(response.data))
+//             .catch(error => console.error(error));
+//             console.log(sightingsList);
+// }, []);
+
+const loadSightings = () => {
+    axios.get('api/sightings')
+        .then(response => setsightingsList(response.data))
+        .catch(error => console.error(error));
+        console.log(sightingsList);
+};
+
+useEffect(() => {
+    loadSightings();
+  }, []);
+
+//   const onSaveSightings = (newSighting) => {
+//     setsightingsList((sightings) => [...sightings, newSighting]);
+//   };
+
+//   const updateSightingsList = (savedSighting) => {
+//     loadSightings();
+//   };
+
+
 
 return (
     <div className='sightingsList'>

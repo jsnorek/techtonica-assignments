@@ -2,6 +2,7 @@ import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 const SpeciesForm = ({ addNewSpecies }) => {
+    console.log('rendering species form...');
     //state to track new species
     const [species, setSpecies] = useState({
         common_name: "",

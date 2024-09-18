@@ -52,6 +52,9 @@ function App() {
         axios.get('/api/species')
             .then(response => setSpeciesList(response.data))
             .catch(error => console.error(error));
+        axios.get('/api/sightings')
+            .then(response => setSightingsList(response.data))
+            .catch(error => console.log(error));
     }, []);
     //function to add new species to the list
     const addNewSpecies = (newSpecies) => {
@@ -60,17 +63,18 @@ function App() {
       console.log(speciesList);
     };
 
-    useEffect(() => {
-      axios.get('/api/sightings')
-        .then(response => setSightingsList(response.data))
-        .catch(error => console.log(error));
-    }, []);
+    // useEffect(() => {
+    //   axios.get('/api/sightings')
+    //     .then(response => setSightingsList(response.data))
+    //     .catch(error => console.log(error));
+    // }, []);
 
     const addNewSighting = (newSighting) => {
       console.log("Adding new sighting to the list: ", newSighting);
       setSightingsList((prevList) => [...prevList, newSighting])
       console.log(sightingsList)
     };
+  
 
 
     return (

@@ -11,6 +11,9 @@ const SpeciesList = ({ speciesList }) => {
     //         .catch(error => console.error(error));
     // }, []);
 
+
+
+
     return (
         <div className="speciesList">
             <h2>Tracked Species</h2>

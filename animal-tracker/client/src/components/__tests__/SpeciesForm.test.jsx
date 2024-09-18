@@ -3,10 +3,11 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import SpeciesForm from  "../SpeciesForm";
 
 test('renders Species Form component correctly', () => {
-    const { getByPlaceholderText } = render(<SpeciesForm />);
+    const { getByPlaceholderText, unmount } = render(<SpeciesForm />);
 
     expect(getByPlaceholderText("Estimated Population")).toBeDefined();
     expect(getByPlaceholderText("Common Name")).toBeDefined();
+    unmount();
 });
 
 test('Species Form renders our mock data correctly', () => {

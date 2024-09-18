@@ -75,6 +75,28 @@ app.post("/api/species", async (req, res) => {
 });
 
 //adding to the sightings table
+// app.post("/api/sightings", async (req, res) => {
+//     try {
+//         const newSighting = {
+//             sighting_time: req.body.sighting_time,
+//             individual_id: req.body.individual_id,
+//             location: req.body.location,
+//             healthy: req.body.healthy,
+//             sighter_email: req.body.sighter_email
+//         };
+//         console.log([newSighting.sighting_time, newSighting.individual_id, newSighting.location, newSighting.healthy, newSighting.sighter_email]);
+//         const result = await db.query(
+//             "INSERT INTO sightings(sighting_time, individual_id, location, healthy, sighter_email) VALUES($1, $2, $3, $4, $5) RETURNING *",
+//             [newSighting.sighting_time, newSighting.individual_id, newSighting.location, newSighting.healthy, newSighting.sighter_email]
+//         );
+//         console.log(result.rows[0]);
+//         res.json(result.rows[0]);
+//     } catch (e) {
+//         console.log(e);
+//         return res.status(400).json({ e });
+//     }
+// });
+
 app.post("/api/sightings", async (req, res) => {
     try {
         const newSighting = {
@@ -89,8 +111,16 @@ app.post("/api/sightings", async (req, res) => {
             "INSERT INTO sightings(sighting_time, individual_id, location, healthy, sighter_email) VALUES($1, $2, $3, $4, $5) RETURNING *",
             [newSighting.sighting_time, newSighting.individual_id, newSighting.location, newSighting.healthy, newSighting.sighter_email]
         );
-        console.log(result.rows[0]);
-        res.json(result.rows[0]);
+        const insertedSighting = result.rows[0];
+        const fullDetailStightings = await db.query (
+            `SELECT sightings.*, individuals.nickname, species.common_name 
+            FROM sightings 
+            JOIN individuals ON sightings.individual_id = individuals.id
+            JOIN species ON individuals.species_id = species.id
+            WHERE sightings.id = $1
+            `, [insertedSighting.id]);
+        // console.log(result.rows[0]);
+        res.json(fullDetailStightings.rows[0]);
     } catch (e) {
         console.log(e);
         return res.status(400).json({ e });

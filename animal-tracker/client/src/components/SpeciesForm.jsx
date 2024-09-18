@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 
+// eslint-disable-next-line react/prop-types
 const SpeciesForm = ({ addNewSpecies }) => {
     //state to track new species
     const [species, setSpecies] = useState({

@@ -33,15 +33,19 @@
 // }
 
 // export default App
+
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import SpeciesList from './components/SpeciesList';
 import SightingsList from './components/SightingsList';
 import SpeciesForm from './components/SpeciesForm';
 import IndividualsForm from './components/IndividualsForm';
+import SightingsForm from './components/SightingsForm';
 
 function App() {
     const [speciesList, setSpeciesList] = useState([]);
+    const [sightingsList, setSightingsList] = useState([]);
 
     //fetch species data
     useEffect(() => {
@@ -56,6 +60,18 @@ function App() {
       console.log(speciesList);
     };
 
+    useEffect(() => {
+      axios.get('/api/sightings')
+        .then(response => setSightingsList(response.data))
+        .catch(error => console.log(error));
+    }, []);
+
+    const addNewSighting = (newSighting) => {
+      console.log("Adding new sighting to the list: ", newSighting);
+      setSightingsList((prevList) => [...prevList, newSighting])
+      console.log(sightingsList)
+    };
+
 
     return (
         <div>
@@ -66,9 +82,10 @@ function App() {
                 ))}
             </ul> */}
             <SpeciesList speciesList={speciesList}/>
-            <SightingsList />
+            <SightingsList sightingsList={sightingsList}/>
             <SpeciesForm addNewSpecies={addNewSpecies}/>
             <IndividualsForm />
+            <SightingsForm addNewSighting={addNewSighting}/>
         </div>
     );
 }

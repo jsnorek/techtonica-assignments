@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
 
-const SightingsList = () => {
-    const [sightingsList, setsightingsList] = useState([]);
+const SightingsList = ({ sightingsList }) => {
+    // const [sightingsList, setsightingsList] = useState([]);
 
 //     useEffect(() => {
 //         axios.get('api/sightings')
@@ -11,16 +11,17 @@ const SightingsList = () => {
 //             console.log(sightingsList);
 // }, []);
 
-const loadSightings = () => {
-    axios.get('api/sightings')
-        .then(response => setsightingsList(response.data))
-        .catch(error => console.error(error));
-        console.log(sightingsList);
-};
+//working last
+// const loadSightings = () => {
+//     axios.get('api/sightings')
+//         .then(response => setsightingsList(response.data))
+//         .catch(error => console.error(error));
+//         console.log(sightingsList);
+// };
 
-useEffect(() => {
-    loadSightings();
-  }, []);
+// useEffect(() => {
+//     loadSightings();
+//   }, []);
 
 //   const onSaveSightings = (newSighting) => {
 //     setsightingsList((sightings) => [...sightings, newSighting]);

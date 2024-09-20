@@ -5,38 +5,200 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f0f7f4;
+  color: #3a3a3a;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+h1 {
+  font-size: 2.5rem;
+  color: #4CAF50;
+  margin-top: 20px;
+  text-shadow: 2px 2px #8bc34a;
+}
+
+/* Species List Styles */
+.speciesList {
+  background-color: #e8f5e9;
+  border: 2px solid #4CAF50;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.speciesList h2 {
+  color: #388e3c;
+}
+
+.speciesList ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.speciesList li {
+  background-color: #ffffff;
+  border: 1px solid #c8e6c9;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  transition: transform 0.3s;
+  font-size: 1.2rem;
+}
+
+.speciesList li:hover {
+  transform: scale(1.02);
+}
+
+/* Sightings List Styles */
+.sightingsList {
+  background-color: #e3f2fd;
+  border: 2px solid #2196F3;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.sightingsList h2 {
+  color: #1976d2;
+}
+
+.sightingsList ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sightingsList li {
+  background-color: #ffffff;
+  border: 1px solid #bbdefb;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  transition: transform 0.3s;
+  font-size: 1.2rem;
+  color: #333;
+}
+.sightingsList li .heart {
+  color: red;
+}
+
+.sightingsList li:hover {
+  transform: scale(1.02);
+}
+
+/* Form Styles */
+form {
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  font-weight: bold;
+  color: #5c6bc0;
+}
+
+form input{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+form input[type="checkbox"] {
+  width: auto;
+  margin-right: 10px;
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #45a049;
+}
+
+/* Media Queries */
+
+/* mobile devices */
+@media (max-width: 480px) {
+
+  .sightingsList, .speciesList {
+    margin: 10px;
+    padding: 10px;
+    max-width: 100%;
+    font-size: .8rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .sightingsList li, .speciesList li {
+    font-size: 1rem;
+    padding: 8px;
+  }
+
+  form input {
+    width: 100%;
+    padding: 2px;
+    font-size: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1rem;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@media (max-width: 860px) {
+  .sightingsList, .speciesList {
+    margin: 15px;
+    padding: 15px;
+    max-width: 90%;
+    font-size: 1rem;
   }
-}
 
-.card {
-  padding: 2em;
-}
+  .sightingsList li, .speciesList li {
+    padding: 10px;
+    font-size: 1rem;
+  }
 
-.read-the-docs {
-  color: #888;
+  button {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+  }
+
+  form input {
+    width: 100%;
+    padding: 2px;
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
 }

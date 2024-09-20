@@ -38,7 +38,7 @@ return (
         <h2>Sightings List</h2>
         <ul>
             {sightingsList.map(sightings => (
-                <li key={sightings.id}> {sightings.common_name} - {sightings.nickname} - {sightings.location} - {sightings.healthy ? 'Healthy' : 'Not Healthy'} - {sightings.sighting_time}</li>
+                <li key={sightings.id}> {sightings.common_name} - {sightings.nickname} - {sightings.location} - {sightings.healthy ? ' ♥' : ' ♡'} - {sightings.sighting_time}</li>
             ))}
         </ul>
     </div>

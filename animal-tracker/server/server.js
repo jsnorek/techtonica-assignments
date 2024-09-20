@@ -196,3 +196,5 @@ app.delete("/api/species/:species_id", async (req, res) => {
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);
 });
+
+export default app;

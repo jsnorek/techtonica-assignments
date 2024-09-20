@@ -1,4 +1,5 @@
-// import pkg from 'pg';
+//leaving for future reference 
+//import pkg from 'pg';
 // const { Pool } = pkg;
 
 // const pool = new Pool({

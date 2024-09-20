@@ -1,7 +1,6 @@
 import request from "supertest";
 import app from "../server.js";
 import { Client } from "pg";
-// Import the library you're using for requests
 import axios from 'axios';
 import db from "../db/db-connection.js";
 

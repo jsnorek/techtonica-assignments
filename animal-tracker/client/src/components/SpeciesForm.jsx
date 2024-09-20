@@ -22,12 +22,7 @@ const SpeciesForm = ({ addNewSpecies }) => {
         addNewSpecies(data); //update species list
         clearForm(); //clear form after submission
     };
-    //add new species to the list
-    // const onSaveSpecies = (newSpecies) => {
-    //     console.log("New species saved:", newSpecies)
-    //     clearForm();
-    // };
-    //clear the form
+   //clear form
     const clearForm = () => {
         setSpecies({ 
             common_name: "", 

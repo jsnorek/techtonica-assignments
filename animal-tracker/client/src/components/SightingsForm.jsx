@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 const SightingsForm = ({ addNewSighting }) => {
-
+    //usestate for sightings
     const [sightings, setSightings] = useState({
         sighting_time: "",
         individual_id: "",
@@ -9,7 +9,7 @@ const SightingsForm = ({ addNewSighting }) => {
         healthy: "",
         sighter_email: ""
     });
-
+    //POST request for sightings
     const postSightings = async (newSighting) => {
         const response = await fetch("http://localhost:8080/api/sightings", {
             method: "POST",
@@ -21,7 +21,7 @@ const SightingsForm = ({ addNewSighting }) => {
         addNewSighting(data);
         clearForm();
     };
-
+    //clear form
     const clearForm = () => {
         setSightings({
             sighting_time: "",
@@ -31,22 +31,21 @@ const SightingsForm = ({ addNewSighting }) => {
             sighter_email: ""
         });
     };
-
+    //handlesubmit
    const handleSubmit = (e) => {
     e.preventDefault();
     postSightings(sightings);
    };
-   
+   //handle form field change
     const handleChange = (e) => {
-        const {name, value} = event.target;
+        const {name, value} = e.target;
         setSightings((prevSightings) => ({...prevSightings, [name]: value }));
     };
-
+    //handle form checkbox change
     const handleCheckboxChange = (e) => {
         const { name, checked } = e.target;
         setSightings((prevSightings) => ({...prevSightings, [name]: checked }));
     };
-
     
     return (
         <form className="form_sightings" onSubmit={handleSubmit}>

@@ -15,7 +15,8 @@ A wildlife application for tracking species, sightings, and individual animals.
 - **Database**: PostgresSQL
 - **Testing**: Vitest, React Testing Library (RTL), Jest
 
-#### Once you have successfully setup this template and initial database, the view will look like this:
+#### Once you have successfully setup this template and initial database, the view will look like this:![localhost_5173_](https://github.com/user-attachments/assets/7f48c270-22f1-4558-b5e8-e9c841b59f9d)
+
 
 ## Prerequisites
 

@@ -1,0 +1,6 @@
+DATABASE_URL="postgresql://username:password@localhost:5432/animal_tracker_db
+PORT=8080"
+
+DB_USER="your_user"
+DB_NAME="your_dbname"
+DB_PORT="8080"

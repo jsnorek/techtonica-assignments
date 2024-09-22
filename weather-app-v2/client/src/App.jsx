@@ -14,7 +14,8 @@ import WeatherData from "./components/WeatherData";
 // [ ] HTML input attributes to validate input and make entering data fast and easy
 // [ ] A test file to test your component(s)
 
-const api_key = process.env.api_key;
+// const api_key = process.env.api_key;
+
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);

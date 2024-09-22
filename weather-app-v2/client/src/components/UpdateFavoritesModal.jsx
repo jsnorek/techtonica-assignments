@@ -9,7 +9,7 @@ function UpdateFavoritesModal({ onSave, onCancel }) {
   }
 
   return (
-    <div className="modal-container">
+    <div className="modal-container" data-testid="update-favorites-modal">
       <div className="update-favorites-modal">
         <input
           type="text"

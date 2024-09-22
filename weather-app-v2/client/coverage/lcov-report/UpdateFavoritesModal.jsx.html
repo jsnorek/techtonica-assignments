@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for SearchBar.jsx</title>
+    <title>Code coverage report for UpdateFavoritesModal.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> SearchBar.jsx</h1>
+        <h1><a href="index.html">All files</a> UpdateFavoritesModal.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/29</span>
+                <span class='fraction'>28/28</span>
             </div>
         
             
@@ -91,17 +91,14 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
@@ -119,37 +116,37 @@
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from "react";
 &nbsp;
-function SearchBar({ setLocation }) {
-  const [searchInput, setSearchInput] = useState("");
+function UpdateFavoritesModal({ onSave, onCancel }) {
 &nbsp;
-  function handleSearchClick() {
-    setLocation(searchInput);
+  const [formValues, setFormValues] = useState("")
+    
+  const handleInputChange = (e) =&gt; {
+    setFormValues(e.target.value);
   }
 &nbsp;
-  const handleChangeSearchInput = (e) =&gt; {
-    setSearchInput(e.target.value);
-  };
-&nbsp;
   return (
-    &lt;div className="searchBar" data-testid="search-bar"&gt;
-      &lt;input
-        type="text"
-        name="searchInput"
-        placeholder="Search"
-        required
-        value={searchInput}
-        onChange={handleChangeSearchInput}
-      /&gt;
-      &lt;button onClick={handleSearchClick}&gt;Search&lt;/button&gt;
+    &lt;div className="modal-container" data-testid="update-favorites-modal"&gt;
+      &lt;div className="update-favorites-modal"&gt;
+        &lt;input
+          type="text"
+          name="updateFavoriteLocation"
+          placeholder="Update your favorite location"
+          required
+          onChange={handleInputChange}
+          value={formValues}
+        /&gt;
+        &lt;button onClick={() =&gt; onSave(formValues)}&gt;Update&lt;/button&gt;
+        &lt;button onClick={onCancel}&gt;Cancel&lt;/button&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
   );
 }
-&nbsp;
-export default SearchBar;
+export default UpdateFavoritesModal;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

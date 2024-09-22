@@ -2,10 +2,10 @@ import { useEffect } from "react";
 
 function ErrorMessage({ errorType, setErrorMessageVisible }) {
     // define all error codes
-    const badRequest = 400;
-    const unauthorized = 401;
-    const notFound = 404;
-    const tooManyRequests = 429;
+    const badRequest = '400';
+    const unauthorized = '401';
+    const notFound = '404';
+    const tooManyRequests = '429';
   
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function SearchBar({ setLocation }) {
   const [searchInput, setSearchInput] = useState("");
@@ -12,7 +12,7 @@ function SearchBar({ setLocation }) {
   };
 
   return (
-    <div className="searchBar">
+    <div className="searchBar" data-testid="search-bar">
       <input
         type="text"
         name="searchInput"

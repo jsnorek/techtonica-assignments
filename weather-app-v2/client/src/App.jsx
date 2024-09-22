@@ -3,6 +3,7 @@ import "./App.css";
 import UpdateFavoritesModal from "./components/UpdateFavoritesModal";
 import SearchBar from "./components/SearchBar";
 import ErrorMessage from "./components/ErrorMessage";
+import WeatherData from "./components/WeatherData";
 
 // [x] hit weather API and store data
 // [~] A DB that stores the user’s favorite city
@@ -13,7 +14,7 @@ import ErrorMessage from "./components/ErrorMessage";
 // [ ] HTML input attributes to validate input and make entering data fast and easy
 // [ ] A test file to test your component(s)
 
-const api_key = proccess.env.API_KEY;
+const api_key = process.env.api_key;
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -28,9 +29,10 @@ function App() {
       try {
         const rawData = await fetch(url);
         const locationData = await rawData.json();
-        if (locationData.status !== 200) {
+        console.log("location updated", locationData);
+        if (locationData.cod !== 200) {
           setErrorMessageVisible(true)
-          setErrorType(locationData.status)
+          setErrorType(locationData.cod)
         } else {
           setWeatherData(locationData);
         }
@@ -49,6 +51,8 @@ function App() {
     setUpdateFavoritesVisible(true);
   };
 
+  console.log(weatherData, "app level")
+
   return (
     <div className="container">
       <div>weather app v2</div>
@@ -64,6 +68,7 @@ function App() {
       )}
 
       {errorMessageVisible && <ErrorMessage errorType={errorType} setErrorMessageVisible={setErrorMessageVisible}/>}
+      <WeatherData weatherData={weatherData}/>
     </div>
   );
 }

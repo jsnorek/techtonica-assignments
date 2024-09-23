@@ -68,6 +68,25 @@ app.get('/user/password', async (req, res) => {
     }
 });
 
+app.post('/users', async (req, res) => {
+    try {
+        const newUser = {
+            username: req.body.username,
+            favorite_city: req.body.favorite_city,
+        };
+        console.log([newUser.username, newUser.favorite_city]);
+        const result = await db.query(
+            "INSERT INTO users(username, favorite_city) VALUES($1, $2) RETURNING *",
+            [newUser.username, newUser.favorite_city]
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+    } catch (e) {
+        console.log('error fechting updated users', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);
 });

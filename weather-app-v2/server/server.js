@@ -87,6 +87,33 @@ app.post('/users', async (req, res) => {
     }
 });
 
+app.put('/users/:user_id', async (req, res) => {
+    const user_id = req.params.user_id;
+    const updatedUser = {
+        username: req.body.username,
+        favorite_city: req.body.favorite_city,
+    };
+    console.log("In the server from the url", user_id);
+    console.log("In the server, from react - the user to be edited", updatedUser);
+    const query = `
+        UPDATE users 
+        SET username=$1, favorite_city=$2
+        WHERE user_id=$3 RETURNING *`;
+    const values = [
+        updatedUser.username,
+        updatedUser.favorite_city,
+        user_id
+    ];
+    try {
+        const updated = await db.query(query, values);
+        console.log(updated.rows[0]);
+        res.send(updated.rows[0]);
+    } catch (e) {
+        console.log('error updating user', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);
 });

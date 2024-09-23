@@ -16,6 +16,7 @@ import WeatherData from "./components/WeatherData";
 
 // const api_key = process.env.api_key;
 
+
 function App() {
   const [weatherData, setWeatherData] = useState(null);
   const [location, setLocation] = useState("Seattle");

@@ -4,7 +4,6 @@ import React, { useState } from "react";
 function UpdateFavoritesModal({ onSave, onCancel }) {
 
   const [formValues, setFormValues] = useState({
-    // username: "",
     favorite_city: ""
   });
   
@@ -36,7 +35,6 @@ function UpdateFavoritesModal({ onSave, onCancel }) {
         console.error("error updating the user:", error);
     }
   };
-
 
   return (
     <div className="modal-container" data-testid="update-favorites-modal">

@@ -114,7 +114,7 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <div>weather app v2</div>
+      <div>Enter your username to save or update your favorite city</div>
       {/* <UsernameLogin userLogin={userLogin} setUserLogin={setUserLogin}/> */}
       <div className="username-login">
             <input
@@ -125,7 +125,7 @@ useEffect(() => {
                 onChange={handleUsernameInputChange}
                 value={userLogin.username}
             />
-            <button onClick={handleClickUsernameInputChange}>Login</button>
+            <button onClick={handleClickUsernameInputChange}>Enter</button>
       </div>
       <SearchBar setLocation={setLocation}/>
       <button onClick={() => handleClickSaveFavorite(location)}>Save Favorite</button>

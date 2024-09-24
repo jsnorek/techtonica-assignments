@@ -28,6 +28,8 @@ console.log("contact info", contact);
                     </p>
                 </div>
                 <Button label="More Details" onClick={onClickHandleDetailsVisible}/>
+                <Button label="Edit" />
+                <Button label="Delete" />
             </Card>
             </div>
         </div>

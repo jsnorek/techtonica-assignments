@@ -5,6 +5,7 @@ import ContactsList from './components/ContactsList'
 import ViewContactDetails from './components/ViewContactDetails'
 import Contact from './components/contact';
 import { Button } from 'primereact/button';
+import CreateContact from './components/CreateContact';
 
 
 function App({  Component, pageProps}) {
@@ -46,6 +47,7 @@ function App({  Component, pageProps}) {
       <ContactsList contacts={contacts} onClickHandleDetailsVisible={handleDetailsVisible}/>
       {contactDetailsVisible && <ViewContactDetails setContactDetailsVisible={setContactDetailsVisible} />}
       {/* <Contact contacts={contacts} onClickHandleDetailsVisible={handleDetailsVisible} contactDetailsVisible={contactDetailsVisible}/> */}
+      <CreateContact />
     </PrimeReactProvider>
   )
 }

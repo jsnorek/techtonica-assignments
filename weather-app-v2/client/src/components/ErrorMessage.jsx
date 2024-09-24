@@ -5,8 +5,7 @@ function ErrorMessage({ errorType, setErrorMessageVisible }) {
     const badRequest = '400';
     const unauthorized = '401';
     const notFound = '404';
-    const tooManyRequests = '429';
-  
+    const tooManyRequests = '429';  
 
   useEffect(() => {
     setTimeout(() => {

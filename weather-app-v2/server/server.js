@@ -49,8 +49,8 @@ app.get('/users', async (req, res) => {
         const { rows: users } = await db.query("SELECT * FROM users");
         res.send(users);
     } catch (e) {
-        console.log(e);
-        return res.status(400).json({ e });
+        console.log('error getting users', e);
+        return res.status(400).json({ error: message.e });
     }
 });
 
@@ -64,6 +64,21 @@ app.get('/user/password', async (req, res) => {
         res.send(users);
     } catch (e) {
         console.log('error fetching users and passwords:', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
+// Fetch user by username
+app.get('/users/username/:username', async (req, res) => {
+    const username = req.params.username;
+    try {
+        const { rows: user } = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+        if (user.length === 0) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        res.json(user[0]); // Return the user details including the user_id
+    } catch (e) {
+        console.log('error fetching user by username:', e);
         return res.status(400).json({ error: e.message });
     }
 });
@@ -110,6 +125,18 @@ app.put('/users/:user_id', async (req, res) => {
         res.send(updated.rows[0]);
     } catch (e) {
         console.log('error updating user', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
+app.delete('/users/:user_id', async (req, res) => {
+    try {
+        const user_id = req.params.user_id;
+        await db.query("DELETE FROM users WHERE user_id=$1", [user_id]);
+        console.log("From the delete request-url", user_id);
+        res.status(200).end();
+    } catch (e) {
+        console.log('error deleting user', e);
         return res.status(400).json({ error: e.message });
     }
 });

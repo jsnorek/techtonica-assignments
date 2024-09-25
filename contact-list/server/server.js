@@ -85,6 +85,18 @@ app.post("/contacts", async (req, res) => {
     }
 });
 
+app.delete("/contacts/:contact_id", async (req, res) => {
+    try {
+        const contact_id = req.params.contact_id;
+        await db.query("DELETE FROM contacts WHERE contact_id=$1", [contact_id]);
+        console.log("From the delete request-url", contact_id);
+        res.status(200).end();
+    } catch (e) {
+        console.log('error deleting contact', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);
 });

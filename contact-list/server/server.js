@@ -85,6 +85,37 @@ app.post("/contacts", async (req, res) => {
     }
 });
 
+app.put("/contacts/:contact_id", async (req, res) => {
+    const contact_id = req.params.contact_id;
+    const updatedContact = {
+        name:req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        notes: req.body.notes,
+    };
+    console.log("in the server from the url - the contact id", contact_id);
+    console.log("In the server from react - contact to be edited", updatedContact);
+    const query = `
+        UPDATE contacts
+        SET name=$1, email=$2, phone=$3, notes=$4
+        WHERE contact_id=$5 RETURNING *`;
+    const values = [
+        updatedContact.name,
+        updatedContact.email,
+        updatedContact.phone,
+        updatedContact.notes,
+        contact_id
+    ];
+    try {
+        const updated = await db.query(query, values);
+        console.log(updated.rows[0]);
+        res.send(updated.rows[0]);
+    } catch (e) {
+        console.log('error editing contact', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
 app.delete("/contacts/:contact_id", async (req, res) => {
     try {
         const contact_id = req.params.contact_id;

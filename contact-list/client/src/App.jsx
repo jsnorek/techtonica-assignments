@@ -23,6 +23,13 @@ function App({  Component, pageProps}) {
       .catch(error => console.error(error));
   }, []);
 
+    //function to add new contact to the list
+    const addNewContact = (newContact) => {
+      console.log("Adding new contact to the list: ", newContact);
+      setContacts((prevList) => [...prevList, newContact])
+      console.log(newContact);
+    };
+
   // console.log('contacts list', contacts);
 
   //fetch contact details based on selectedContactId
@@ -95,7 +102,7 @@ function App({  Component, pageProps}) {
       {contactDetailsVisible && 
         <ViewContactDetails contactDetails={contactDetails} setContactDetailsVisible={setContactDetailsVisible} />}
       {/* <Contact contacts={contacts} onClickHandleDetailsVisible={handleDetailsVisible} contactDetailsVisible={contactDetailsVisible}/> */}
-      <CreateContact />
+      <CreateContact addNewContact={addNewContact}/>
     </PrimeReactProvider>
   )
 }

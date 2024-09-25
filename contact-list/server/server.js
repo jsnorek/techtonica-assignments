@@ -64,6 +64,27 @@ app.get("/contacts/contact_details/:contact_id", async (req, res) => {
     }
 });
 
+app.post("/contacts", async (req, res) => {
+    try {
+        const newContact = {
+            name: req.body.name,
+            email: req.body.email,
+            phone: req.body.phone,
+            notes: req.body.notes,
+        };
+        console.log([newContact.name, newContact.email, newContact.phone, newContact.notes]);
+        const result = await db.query(
+            "INSERT INTO contacts(name, email, phone, notes) VALUES($1, $2, $3, $4) RETURNING *",
+            [newContact.name, newContact.email, newContact.phone, newContact.notes]
+        );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
+    } catch (e) {
+        console.log('error adding contact', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);
 });

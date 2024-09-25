@@ -5,7 +5,7 @@ import { Card } from 'primereact/card';
         
         
 //to create template for individual contacts being listed in the contactslist
-function Contact({ onClickHandleDetailsVisible, contact }) {
+function Contact({ onClickHandleDetailsVisible, contact, toDelete}) {
    if (!contact) {
     return <div>Loading...</div>;
    }
@@ -30,7 +30,7 @@ console.log("contact info", contact);
                 {/* <Button label="More Details" onClick={onClickHandleDetailsVisible}/> */}
                 <Button label="More Details" onClick={() => onClickHandleDetailsVisible(contact.contact_id)} />
                 <Button label="Edit" />
-                <Button label="Delete" />
+                <Button label="Delete" onClick={toDelete}/>
             </Card>
             </div>
         </div>

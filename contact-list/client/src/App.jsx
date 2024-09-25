@@ -6,6 +6,7 @@ import ViewContactDetails from './components/ViewContactDetails'
 import Contact from './components/contact';
 import { Button } from 'primereact/button';
 import CreateContact from './components/CreateContact';
+import axios from 'axios';
 
 
 function App({  Component, pageProps}) {
@@ -13,27 +14,36 @@ function App({  Component, pageProps}) {
   const [contactDetailsVisible, setContactDetailsVisible] = useState(false);
   const [contacts, setContacts] = useState([]);
 
-  const loadContacts = () => {
-    const contacts = [
-      { contact_id: 1,
-        name: 'juliana',
-        email: 'juliana@example.com',
-        phone: '7077077077',
-        notes: 'additional notes'
-      },
-      { contact_id: 2,
-        name: 'rhino',
-        email: 'rhino@example.com',
-        phone: '7077077078',
-        notes: 'additional notessss'
-      }
-    ]
-    setContacts(contacts);
-  }
-
   useEffect(() => {
-    loadContacts();
-  }, []); //add contact in the array?
+    axios.get('http://localhost:8005/contacts')
+    .then(response => setContacts(response.data))
+    .catch(error => console.error(error));
+  }, []);
+
+  console.log('contacts list', contacts);
+
+  //test data
+  // const loadContacts = () => {
+  //   const contacts = [
+  //     { contact_id: 1,
+  //       name: 'juliana',
+  //       email: 'juliana@example.com',
+  //       phone: '7077077077',
+  //       notes: 'additional notes'
+  //     },
+  //     { contact_id: 2,
+  //       name: 'rhino',
+  //       email: 'rhino@example.com',
+  //       phone: '7077077078',
+  //       notes: 'additional notessss'
+  //     }
+  //   ]
+  //   setContacts(contacts);
+  // }
+
+  // useEffect(() => {
+  //   loadContacts();
+  // }, []); //add contact in the array?
   
 
   const handleDetailsVisible = () => {

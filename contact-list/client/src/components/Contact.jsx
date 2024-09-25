@@ -27,7 +27,8 @@ console.log("contact info", contact);
                     {contact.notes}
                     </p>
                 </div>
-                <Button label="More Details" onClick={onClickHandleDetailsVisible}/>
+                {/* <Button label="More Details" onClick={onClickHandleDetailsVisible}/> */}
+                <Button label="More Details" onClick={() => onClickHandleDetailsVisible(contact.contact_id)} />
                 <Button label="Edit" />
                 <Button label="Delete" />
             </Card>

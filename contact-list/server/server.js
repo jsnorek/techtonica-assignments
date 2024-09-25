@@ -32,7 +32,7 @@ app.get("/contacts", async (req, res) => {
     }
 });
 
-// app.get("/contacts/:contact-id", async (req, res) => {
+// app.get("/contacts/:contact_id", async (req, res) => {
 //     const contact_id = req.params.contact_id;
 //     try {
 //         const { rows: contact_details } = await db.query(`
@@ -48,21 +48,21 @@ app.get("/contacts", async (req, res) => {
 //     }
 // });
 
-// app.get("/contacts/contact_details/:contact-id", async (req, res) => {
-//     const contact_id = req.params.contact_id;
-//     try {
-//         const result = await db.query(`
-//             SELECT contact_details*, contacts.name
-//             FROM contact_details
-//             JOIN contacts ON contact_details.contact_id = contacts.contact_id
-//             WHERE contact_details.contact_id = $1
-//         `, [contact_id]);
-//         res.send(result.rows);
-//     } catch(e) {
-//         console.log('error fetching contact details', e);
-//         return res.status(400).json({ error: message.e });
-//     }
-// });
+app.get("/contacts/contact_details/:contact_id", async (req, res) => {
+    const contact_id = req.params.contact_id;
+    try {
+        const result = await db.query(`
+            SELECT contact_details.*, contacts.name
+            FROM contact_details
+            JOIN contacts ON contact_details.contact_id = contacts.contact_id
+            WHERE contact_details.contact_id = $1
+        `, [contact_id]);
+        res.send(result.rows);
+    } catch(e) {
+        console.log('error fetching contact details', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
 
 app.listen(PORT, () => {
     console.log(`Hi, server listening on ${PORT}`);

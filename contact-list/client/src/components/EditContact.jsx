@@ -21,6 +21,10 @@ function EditContact({ contact, onUpdate, setEditContactVisible }) {
         setEditContactVisible(false);
     }
 
+    const handleCancelButton = (e) => {
+        setEditContactVisible(false)
+    };
+
     return (
         <form onSubmit={handleSubmit}>
             <div>
@@ -59,7 +63,8 @@ function EditContact({ contact, onUpdate, setEditContactVisible }) {
                     onChange={handleInputChange}
                 />
             </div>
-            <Button label="submit"></Button> 
+            <Button label="Submit"></Button>
+            <Button label="Cancel" onClick={handleCancelButton}></Button> 
         </form>
     )
 }

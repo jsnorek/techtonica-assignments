@@ -16,14 +16,20 @@
 }
 
 .contactDetailsModal {
-  width: 600px;
-  height: 250px;
   border: 1px solid black;
   border-radius: 10px;
-  /* background-color: rgba(0,0,0,0.4); */
+  background-color: rgba(0,0,0,0.4);
   background-color: lightgrey;
-  z-index: 10;
-  display: flex;
+  /* controls stacking order of overlapping elements on the page */
+  z-index: 10; 
+  /* display: flex; */
   justify-content: center;
   align-items: center;
+  /* to position modal on top of everything else */
+  position:fixed;
+  top:calc(50% - 200px);
+  left:calc(50% - 250px);
+  width:500px;
+  height:400px;
+  padding-top: 40px;
 }

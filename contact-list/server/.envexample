@@ -1,0 +1,6 @@
+DATABASE_URL="postgresql://username:password@localhost:5432/contacts_app
+PORT=8080"
+
+DB_USER="your_user"
+DB_NAME="your_dbname"
+DB_PORT="8080"

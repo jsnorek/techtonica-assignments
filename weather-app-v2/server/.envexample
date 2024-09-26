@@ -1,5 +1,5 @@
 api_key=""
-DATABASE_URL="postgresql://username:password@localhost:5432/animal_tracker_db
+DATABASE_URL="postgresql://username:password@localhost:5432/weather_app
 PORT=8080"
 
 DB_USER="your_user"

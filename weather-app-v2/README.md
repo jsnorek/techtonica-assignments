@@ -1,6 +1,6 @@
 # Contact List
 
-A weather application for displaying the current weather based on user search. 
+A weather application using OpenWeatherMap API for displaying the current weather based on user search. 
 
 ## Features
 - **Weather Data**: Displays the current weather information based on a specific location.
@@ -16,6 +16,13 @@ A weather application for displaying the current weather based on user search.
 
 #### Once you have successfully setup this template and initial database, the view will look like this:
 
+## API Usage
+
+This weather app uses the OpenWeatherMap API to pull the current weather. The OpenWeatherMap API needed for this project is free to use if you sign up for a student account.
+
+https://openweathermap.org/api
+
+Registration for an API key is neccessary. To do this, you must sign up for an account and provide student details. Once approved, log in and you can find you key under "My API keys".
 
 ## Prerequisites
 
@@ -50,7 +57,7 @@ Follow these steps to run the app locally:
 4. To setup the database:
 * In a different terminal window go to the psql terminal with the comand `psql` and create a newdatabase with `createdb weather_app`
 * Use the provided db.sql file to set up your database schema with the command `psql -d weather_app -f path/to/db.sql`
-* Inside your server directory create a `.env` file and copy there the values that are in `.envexample` making sure to change them to your own information
+* Inside your server directory create a `.env` file and copy there the values that are in `.envexample` making sure to change them to your own information. Be sure to update the api_key to your API key.
 
 ## Running the App
 
@@ -63,6 +70,18 @@ The server should now be running on `http://localhost:8080`.
 ## Testing
 
 To run debugging tests on your forms, open a new terminal and navigate into your client folder (`cd client`) and run the command `npm run test`
+
+## Edge Cases
+
+- **API Error Handling**: This app displays a timed error message for API errors based on API documentation and which error code is occurring.
+- **Database Error Handling**: Postman was used to make sure endpoints worked correctly 
+
+## Database Schema
+
+The database schema includes tables for users and for user_passwords that have user_id number as a foreign key:
+
+-**users**: Stores user_id, username, favorite_city
+-**user_passwords**: Stores password_id, user_id, password_hash, created_at
 
 ## Contributing
 

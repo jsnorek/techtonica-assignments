@@ -1,5 +1,5 @@
 import { Button } from "primereact/button";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function CreateContact({ addNewContact }) {
 
@@ -9,6 +9,7 @@ function CreateContact({ addNewContact }) {
         phone: "",
         notes: ""
     });
+    const [errorMessage, setErrorMessage] = useState("");
 
     const postContacts = async (newContact) => {
         const response = await fetch("http://localhost:8005/contacts", {
@@ -16,11 +17,21 @@ function CreateContact({ addNewContact }) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(newContact)
         });
+        if (!response.ok) {
+            throw new Error("Failed to submit form. Please try again.");
+        }
+        
         const data = await response.json();
         console.log(data);
         addNewContact(data);
         clearForm();
     };
+
+    useEffect(() => {
+        setTimeout(() => {
+            setErrorMessage("");
+        }, 3000);
+      }, [errorMessage]);
 
     const clearForm = () => {
         setContact({
@@ -29,10 +40,16 @@ function CreateContact({ addNewContact }) {
             phone: "",
             notes: ""
         });
+        setErrorMessage("");
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (!contact.name || !contact.phone) {
+            setErrorMessage("Name and Phone are required fields.");
+            console.log(errorMessage);
+            return;
+        }
         postContacts(contact); //call postContacts to submit form data
     };
 
@@ -49,7 +66,6 @@ function CreateContact({ addNewContact }) {
                     type="text"
                     name="name"
                     placeholder="Full Name"
-                    required
                     value={contact.name}
                     onChange={handleChange}
                 />
@@ -77,6 +93,7 @@ function CreateContact({ addNewContact }) {
                 />
                 <Button label="submit"></Button>
             </form>
+            {errorMessage && <p className="errorMessage" style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
     )
 }

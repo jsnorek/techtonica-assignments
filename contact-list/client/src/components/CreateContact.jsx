@@ -59,9 +59,9 @@ function CreateContact({ addNewContact }) {
     };
 
     return (
-        <div>
+        <div className="createContact" data-testid="create-contact">
             <h2>Add New Contact</h2>
-            <form className="createContact" onSubmit={handleSubmit}>
+            <form className="contactForm" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="name"

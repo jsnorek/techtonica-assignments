@@ -21,7 +21,8 @@ function App() {
   const [location, setLocation] = useState("Seattle");
   const [updateFavoritesVisible, setUpdateFavoritesVisible] = useState(false);
   const [errorMessageVisible, setErrorMessageVisible] = useState(false);
-  const [errorType, setErrorType] = useState("default")
+  const [errorType, setErrorType] = useState("default");
+  const [loginErrorMessage, setLoginErrorMessage] = useState("");
   // const [userId, setUserId] = useState(null);
   const [userLogin, setUserLogin] = useState({
     user_id: "",
@@ -58,6 +59,7 @@ function App() {
   const handleClickSaveFavorite = async (favoriteLocation) => {
     if (!userLogin.user_id) {
       console.error("User not logged in. Please log in first.");
+      setLoginErrorMessage("User not logged in. Please enter your username to login before choosing a favorite city.");
       return;
     }
     try {
@@ -74,6 +76,13 @@ function App() {
       console.error("error updating favorite city:", error);
     }
   };
+  
+//timer for login error message
+  useEffect(() => {
+    setTimeout(() => {
+        setLoginErrorMessage("");
+    }, 3000);
+  }, [loginErrorMessage]);
 
   const handleClickUpdateFavorite = () => {
     // setUserId(id);
@@ -114,7 +123,8 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <div>Enter your username to save or update your favorite city</div>
+      <p style={{ color: 'black' }}>Enter your username to save or update your favorite city</p>
+      <p style={{ color: 'red' }}>{loginErrorMessage}</p>
       {/* <UsernameLogin userLogin={userLogin} setUserLogin={setUserLogin}/> */}
       <div className="username-login">
             <input

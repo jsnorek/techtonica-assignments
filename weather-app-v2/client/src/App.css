@@ -19,16 +19,24 @@
 }
 
 .update-favorites-modal {
-  width: 400px;
-  height: 200px;
+  width:400px;
+  height:250px;
   border: 1px solid black;
   border-radius: 10px;
   /* background-color: rgba(0,0,0,0.4); */
   background-color: lightgrey;
-  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+  background-color: rgba(0,0,0,0.4);
+  background-color: rgb(75, 22, 64);
+  /* controls stacking order of overlapping elements on the page */
+  z-index: 10; 
+  /* to position modal on top of everything else */
+  position:fixed;
+  top:calc(50% - 200px);
+  left:calc(50% - 250px);
 }
 
 .weather-data {

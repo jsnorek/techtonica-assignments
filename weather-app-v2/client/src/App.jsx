@@ -72,6 +72,7 @@ function App() {
         ...userLogin,
         favorite_city: favoriteLocation
       });
+      setUpdateFavoritesVisible(false);
     } catch (error) {
       console.error("error updating favorite city:", error);
     }
@@ -81,7 +82,7 @@ function App() {
   useEffect(() => {
     setTimeout(() => {
         setLoginErrorMessage("");
-    }, 3000);
+    }, 5000);
   }, [loginErrorMessage]);
 
   const handleClickUpdateFavorite = () => {
@@ -123,7 +124,7 @@ useEffect(() => {
 
   return (
     <div className="container">
-      <p style={{ color: 'black' }}>Enter your username to save or update your favorite city</p>
+      <h3 style={{ color: 'black' }}>Enter your username to save or update your favorite city</h3>
       <p style={{ color: 'red' }}>{loginErrorMessage}</p>
       {/* <UsernameLogin userLogin={userLogin} setUserLogin={setUserLogin}/> */}
       <div className="username-login">
@@ -136,6 +137,7 @@ useEffect(() => {
                 value={userLogin.username}
             />
             <button onClick={handleClickUsernameInputChange}>Enter</button>
+            <p style={{ color: 'black' }}>Hi {userLogin.username}! Your favorite city is currently: {userLogin.favorite_city}</p>
       </div>
       <SearchBar setLocation={setLocation}/>
       <button onClick={() => handleClickSaveFavorite(location)}>Save Favorite</button>

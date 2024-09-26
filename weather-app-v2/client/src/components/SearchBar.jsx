@@ -5,6 +5,7 @@ function SearchBar({ setLocation }) {
 
   function handleSearchClick() {
     setLocation(searchInput);
+    setSearchInput("");
   }
 
   const handleChangeSearchInput = (e) => {

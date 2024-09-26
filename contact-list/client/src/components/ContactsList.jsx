@@ -20,6 +20,23 @@ function ContactsList({ contacts, onClickHandleDetailsVisible, setContacts }) {
         });
     };
 
+    const onUpdate = (contactId, updatedContact) => {
+        axios.put(`http://localhost:8005/contacts/${contactId}`, updatedContact)
+        .then((response) => {
+            if (response.status === 200) {
+                // Update the state to reflect the updated contact details
+                setContacts((prevContacts) => 
+                    prevContacts.map((contact) => 
+                        contact.contact_id === contactId ? { ...contact, ...updatedContact } : contact
+                    )
+                );
+            }
+        })
+        .catch((error) => {
+            console.error("Error updating contact:", error);
+        });
+    };
+
 
     return (
         <div className="contactsList">
@@ -32,8 +49,8 @@ function ContactsList({ contacts, onClickHandleDetailsVisible, setContacts }) {
                             <Contact
                             contact={contact}
                             onClickHandleDetailsVisible={onClickHandleDetailsVisible}
-                            toDelete={() => onDelete(contact.contact_id)}  // Pass the contact_id to onDelete
-                            // toUpdate={onUpdate}
+                            onDelete={() => onDelete(contact.contact_id)}  // Pass the contact_id to onDelete
+                            onUpdate={onUpdate}
                             />
                     </li>
                   );

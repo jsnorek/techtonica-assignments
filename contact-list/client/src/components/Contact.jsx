@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
+import EditContact from "./EditContact";
 
         
         
 //to create template for individual contacts being listed in the contactslist
-function Contact({ onClickHandleDetailsVisible, contact, toDelete}) {
+function Contact({ onClickHandleDetailsVisible, contact, onDelete, onUpdate}) {
    if (!contact) {
     return <div>Loading...</div>;
    }
+
+   const [editContactVisible, setEditContactVisible] = useState(false);
+
+   const handleContactVisible = () => {
+    setEditContactVisible(true);
+    console.log('is contact visible?', editContactVisible);
+   };
+
 
 console.log("contact info", contact);
     return (
@@ -29,8 +38,10 @@ console.log("contact info", contact);
                 </div>
                 {/* <Button label="More Details" onClick={onClickHandleDetailsVisible}/> */}
                 <Button label="More Details" onClick={() => onClickHandleDetailsVisible(contact.contact_id)} />
-                <Button label="Edit" />
-                <Button label="Delete" onClick={toDelete}/>
+                {editContactVisible && 
+                    <EditContact contact={contact} onUpdate={onUpdate} setEditContactVisible={setEditContactVisible}/>}
+                <Button label="Edit" onClick={handleContactVisible}/>
+                <Button label="Delete" onClick={onDelete}/>
             </Card>
             </div>
         </div>

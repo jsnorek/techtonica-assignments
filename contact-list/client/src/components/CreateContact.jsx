@@ -54,7 +54,7 @@ function CreateContact({ addNewContact }) {
                     onChange={handleChange}
                 />
                 <input
-                    type="text"
+                    type="email"
                     name="email"
                     placeholder="Email" 
                     value={contact.email}

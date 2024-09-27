@@ -11,12 +11,14 @@ function CreateContact({ addNewContact }) {
   });
   const [errorMessage, setErrorMessage] = useState("");
 
+  //timer for error message
   useEffect(() => {
     setTimeout(() => {
       setErrorMessage("");
     }, 3000);
   }, [errorMessage]);
 
+  //clear add contact form and error message
   const clearForm = () => {
     setContact({
       name: "",
@@ -26,7 +28,7 @@ function CreateContact({ addNewContact }) {
     });
     setErrorMessage("");
   };
-
+  //on submit add new contact, if no name or phone entered, show error message
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!contact.name || !contact.phone) {
@@ -39,7 +41,7 @@ function CreateContact({ addNewContact }) {
     addNewContact(data);
     clearForm();
   };
-
+  
   const handleChange = (e) => {
     const { name, value } = e.target;
     setContact((prevContact) => ({ ...prevContact, [name]: value }));

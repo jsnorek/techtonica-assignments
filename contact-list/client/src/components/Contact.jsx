@@ -13,7 +13,7 @@ function Contact({ onClickHandleDetailsVisible, contact, onDelete, onUpdate }) {
 
   const handleContactVisible = () => {
     setEditContactVisible(true);
-    console.log("is contact visible?", editContactVisible);
+    // console.log("is contact visible?", editContactVisible);
   };
 
   console.log("contact info", contact);
@@ -27,7 +27,6 @@ function Contact({ onClickHandleDetailsVisible, contact, onDelete, onUpdate }) {
             <p>{contact.phone}</p>
             <p>{contact.notes}</p>
           </div>
-          {/* <Button label="More Details" onClick={onClickHandleDetailsVisible}/> */}
           <Button
             label="More Details"
             onClick={() => onClickHandleDetailsVisible(contact.contact_id)}

@@ -12,8 +12,8 @@ function ViewContactDetails({ contactDetails ,setContactDetailsVisible }) {
       // Check if the contact details exist and are an array
     const details = contactDetails && contactDetails.length > 0 ? contactDetails[0] : null;
 
-console.log('chosen contact details', contactDetails);
-console.log('chosen contact details sectioned out', details);
+// console.log('chosen contact details', contactDetails);
+// console.log('chosen contact details sectioned out', details);
     return (
         <div className="viewContactDetailsContainer">
             <div className="contactDetailsModal">

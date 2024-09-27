@@ -39,9 +39,39 @@
   left:calc(50% - 250px);
 }
 
+.update-favorites-modal h2 {
+  color: rgb(60, 24, 93);
+}
+
 .weather-data {
   height: 300px;
   border: 1px solid black;
   border-radius: 10px;
   background-image: linear-gradient(to right, rgb(239, 133, 196), rgb(146, 121, 205));
+}
+
+/* Media Query for devices with a width of 768px or smaller (Tablets and Mobile) */
+@media (max-width: 768px) {
+  #root {
+    padding: 1rem;
+  }
+
+  .weather-data {
+    height: auto;
+    margin: 1rem 0;
+  }
+}
+
+/* Media Query for laptop-sized screens (1024px to 1280px) */
+@media (max-width: 1280px) {
+  #root {
+    max-width: 960px;
+  }
+
+  .update-favorites-modal {
+    width: 350px;
+    height: 220px;
+    top: calc(50% - 150px);
+    left: calc(50% - 175px);
+  }
 }

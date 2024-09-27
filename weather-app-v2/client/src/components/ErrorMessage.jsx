@@ -1,16 +1,17 @@
 import { useEffect } from "react";
 
 function ErrorMessage({ errorType, setErrorMessageVisible }) {
-    // define all error codes
+    // possible error code pulled from weather API
     const badRequest = '400';
     const unauthorized = '401';
     const notFound = '404';
     const tooManyRequests = '429';  
 
+  //timer for error message display
   useEffect(() => {
     setTimeout(() => {
         setErrorMessageVisible(false);
-    }, 3000);
+    }, 5000);
   }, []);
 
   const getErrorMessage = () => {

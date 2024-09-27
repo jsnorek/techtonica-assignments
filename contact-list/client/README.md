@@ -16,6 +16,8 @@ A contact application for displaying contacts listed in the database.
 - **Testing**: Vitest, React Testing Library (RTL), Jest
 
 #### Once you have successfully setup this template and initial database, the view will look like this:
+![ezgif com-optimize](https://github.com/user-attachments/assets/4d3632fd-59e4-4875-b668-62ea6d1d32a2)
+
 
 
 ## Prerequisites

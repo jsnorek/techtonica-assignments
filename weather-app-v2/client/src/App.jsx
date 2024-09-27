@@ -40,11 +40,6 @@ function App() {
     getWeatherData();
   }, [location]);
 
-  //test way to set up with a local storage database
-  // const handleClickSaveFavorite = (favoriteLocation) => {
-  //   window.localStorage.setItem("favorites", favoriteLocation);
-  // };
-
   //favorite location can only be called if a user_id has been captured
   const handleClickSaveFavorite = async (favoriteLocation) => {
     if (!userLogin.user_id) {
@@ -165,3 +160,9 @@ function App() {
 }
 
 export default App;
+
+
+ // * keeping for notes * test way to set up with a local storage database
+  // const handleClickSaveFavorite = (favoriteLocation) => {
+  //   window.localStorage.setItem("favorites", favoriteLocation);
+  // };

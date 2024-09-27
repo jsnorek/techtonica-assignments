@@ -97,12 +97,15 @@ function App({  Component, pageProps}) {
   
   return (
     <PrimeReactProvider>
+
+      <div className='contact-backgrounds'>
       <h1>Contact List</h1>
       <ContactsList contacts={contacts} onClickHandleDetailsVisible={handleDetailsVisible} setContacts={setContacts}/>
       {contactDetailsVisible && 
         <ViewContactDetails contactDetails={contactDetails} setContactDetailsVisible={setContactDetailsVisible} />}
       {/* <Contact contacts={contacts} onClickHandleDetailsVisible={handleDetailsVisible} contactDetailsVisible={contactDetailsVisible}/> */}
       <CreateContact addNewContact={addNewContact}/>
+      </div>
     </PrimeReactProvider>
   )
 }

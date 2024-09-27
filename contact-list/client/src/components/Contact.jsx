@@ -22,20 +22,20 @@ function Contact({ onClickHandleDetailsVisible, contact, onDelete, onUpdate}) {
 console.log("contact info", contact);
     return (
         <div className="contactCard">
-            <h4>Card</h4>
+            <h4>Contact Information</h4>
             <div>
-            <Card title={contact.name} subTitle="Contact Information">
-                <div className="contact-info">
-                    <p>
-                    {contact.email}
-                    </p>
-                    <p>
-                    {contact.phone}
-                    </p>
-                    <p>
-                    {contact.notes}
-                    </p>
-                </div>
+                <Card title={contact.name}>
+                    <div className="contact-info">
+                        <p>
+                        {contact.email}
+                        </p>
+                        <p>
+                        {contact.phone}
+                        </p>
+                        <p>
+                        {contact.notes}
+                        </p>
+                    </div>
                 {/* <Button label="More Details" onClick={onClickHandleDetailsVisible}/> */}
                 <Button label="More Details" onClick={() => onClickHandleDetailsVisible(contact.contact_id)} />
                 {editContactVisible && 

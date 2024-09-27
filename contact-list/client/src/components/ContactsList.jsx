@@ -40,7 +40,6 @@ function ContactsList({ contacts, onClickHandleDetailsVisible, setContacts }) {
 
     return (
         <div className="contactsList">
-            <h2>Contacts</h2>
             <ul>
                 {contacts.map((contact) => {
                     return (

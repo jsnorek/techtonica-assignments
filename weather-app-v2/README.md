@@ -15,6 +15,8 @@ A weather application using OpenWeatherMap API for displaying the current weathe
 - **Testing**: Vitest, React Testing Library (RTL), Jest
 
 #### Once you have successfully setup this template and initial database, the view will look like this:
+![ezgif com-optimize (1)](https://github.com/user-attachments/assets/2ae7d275-851c-4caa-970b-a4c83bae4126)
+
 
 ## API Usage
 
@@ -90,6 +92,6 @@ If you'd like to contribute, please fork the repository and use a feature branch
 ## Stretch Goals
 
 - **Add a full login with user entering username and password**
-- **Upon login, weather app displays the user's current favorite city data that updates as the user changes their favorite city**
+- **Upon login, weather app displays the user's current favorite city data that updates as the user changes their favorite city but prompts logging in if no user is entered**
 - **Add new user form**
 

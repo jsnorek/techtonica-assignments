@@ -90,3 +90,29 @@ li {
   padding-right: 25px;
   border-radius: 10px;
 }
+
+/* Small Screens (Phones) */
+@media (max-width: 767px) {
+  #root {
+    padding: 1rem;
+    max-width: 100%;
+  }
+  body {
+    background-size: contain;
+  }
+
+  .contactCard {
+    width: 250px;
+  }
+
+  .contactDetailsModal {
+    width: 95%;
+    height: 30%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:calc(50% - 200px);
+    left:calc(50% - 200px);
+  }
+}

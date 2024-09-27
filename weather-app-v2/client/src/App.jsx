@@ -4,17 +4,7 @@ import UpdateFavoritesModal from "./components/UpdateFavoritesModal";
 import SearchBar from "./components/SearchBar";
 import ErrorMessage from "./components/ErrorMessage";
 import WeatherData from "./components/WeatherData";
-// import UsernameLogin from "./components/UsernameLogin";
-import axios from 'axios';
-
-// [x] hit weather API and store data
-// [x] A DB that stores the user’s favorite city
-// [x] A button to save the user’s favorite city
-// [x] An update button to update the user’s favorite city
-// [x] Error handling
-// [x] show a user-visible error message to indicate what's wrong and how the user can fix it
-// [x] HTML input attributes to validate input and make entering data fast and easy
-// [x] A test file to test your component(s)
+import axios from "axios";
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
@@ -23,29 +13,28 @@ function App() {
   const [errorMessageVisible, setErrorMessageVisible] = useState(false);
   const [errorType, setErrorType] = useState("default");
   const [loginErrorMessage, setLoginErrorMessage] = useState("");
-  // const [userId, setUserId] = useState(null);
   const [userLogin, setUserLogin] = useState({
     user_id: "",
     username: "",
-    favorite_city: ""
+    favorite_city: "",
   });
-  // const [usersList, setUsersList] = useState([]);
 
+//get weather data depending on location
   useEffect(() => {
     const getWeatherData = async () => {
-      const url = (`http://localhost:8080/location/${location}`);
+      const url = `http://localhost:8080/location/${location}`;
       try {
         const rawData = await fetch(url);
         const locationData = await rawData.json();
         console.log("location updated", locationData);
         if (locationData.cod !== 200) {
-          setErrorMessageVisible(true)
-          setErrorType(locationData.cod)
+          setErrorMessageVisible(true);
+          setErrorType(locationData.cod);
         } else {
           setWeatherData(locationData);
         }
       } catch (e) {
-        setErrorMessageVisible(true)
+        setErrorMessageVisible(true);
       }
     };
     getWeatherData();
@@ -56,91 +45,105 @@ function App() {
   //   window.localStorage.setItem("favorites", favoriteLocation);
   // };
 
+  //favorite location can only be called if a user_id has been captured
   const handleClickSaveFavorite = async (favoriteLocation) => {
     if (!userLogin.user_id) {
       console.error("User not logged in. Please log in first.");
-      setLoginErrorMessage("User not logged in. Please enter your username to login before choosing a favorite city.");
+      setLoginErrorMessage(
+        "User not logged in. Please enter your username to login before choosing a favorite city."
+      );
       return;
     }
     try {
-      const response = await axios.put(`http://localhost:8080/users/${userLogin.user_id}`, {
-        username: userLogin.username,
-        favorite_city: favoriteLocation
-      });
+      const response = await axios.put(
+        `http://localhost:8080/users/${userLogin.user_id}`,
+        {
+          username: userLogin.username,
+          favorite_city: favoriteLocation,
+        }
+      );
       console.log("favorite city updated:", response.data);
       setUserLogin({
         ...userLogin,
-        favorite_city: favoriteLocation
+        favorite_city: favoriteLocation,
       });
       setUpdateFavoritesVisible(false);
     } catch (error) {
       console.error("error updating favorite city:", error);
     }
   };
-  
-//timer for login error message
+
+  //timer for login error message
   useEffect(() => {
     setTimeout(() => {
-        setLoginErrorMessage("");
+      setLoginErrorMessage("");
     }, 5000);
   }, [loginErrorMessage]);
 
+  //toggles visibility for update modal
   const handleClickUpdateFavorite = () => {
     // setUserId(id);
     setUpdateFavoritesVisible(true);
   };
-
+  //updates userLogin to username input
   const handleUsernameInputChange = (e) => {
     setUserLogin({
       ...userLogin,
-      username: e.target.value
+      username: e.target.value,
     });
     console.log("username set to", userLogin);
-};
-
+  };
+  //gets the data from the endpoint and sets userLogin
   const handleClickUsernameInputChange = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/users/username/${userLogin.username}`);
+      const response = await axios.get(
+        `http://localhost:8080/users/username/${userLogin.username}`
+      );
       const user = response.data;
       setUserLogin({
         ...userLogin,
         user_id: user.user_id,
-        favorite_city: user.favorite_city
+        favorite_city: user.favorite_city,
       });
       console.log("userLogin", userLogin);
       console.log("User logged in:", user);
     } catch (error) {
       console.error("error fetching user:", error);
     }
-};
-//needed to update userLogin state from handleClickUsernameInputChange since it doesn't update it in time
-useEffect(() => {
-  // This will log every time userLogin is updated
-  console.log("Updated userLogin state:", userLogin);
-}, [userLogin]);
+  };
+  //needed to update userLogin state from handleClickUsernameInputChange since it doesn't update it in time
+  useEffect(() => {
+    // This will log every time userLogin is updated
+    console.log("Updated userLogin state:", userLogin);
+  }, [userLogin]);
 
-
-  console.log(weatherData, "app level")
+  // console.log(weatherData, "app level");
 
   return (
     <div className="container">
-      <h3 style={{ color: 'black' }}>Enter your username to save or update your favorite city</h3>
-      <p style={{ color: 'red' }}>{loginErrorMessage}</p>
-      {/* <UsernameLogin userLogin={userLogin} setUserLogin={setUserLogin}/> */}
+      <h3 style={{ color: "black" }}>
+        Enter your username to save or update your favorite city
+      </h3>
+      <p style={{ color: "red" }}>{loginErrorMessage}</p>
       <div className="username-login">
-            <input
-                type="text"
-                name="username-login"
-                placeholder="username"
-                required
-                onChange={handleUsernameInputChange}
-                value={userLogin.username}
-            />
-            <button onClick={handleClickUsernameInputChange}>Enter</button>
-            <p style={{ color: 'black' }}>Hi {userLogin.username}! Your favorite city is currently: {userLogin.favorite_city}</p>
+        <input
+          type="text"
+          name="username-login"
+          placeholder="username"
+          required
+          onChange={handleUsernameInputChange}
+          value={userLogin.username}
+        />
+        <button onClick={handleClickUsernameInputChange}>Enter</button>
+        <p style={{ color: "black" }}>
+          Hi {userLogin.username}! Your favorite city is currently:{" "}
+          {userLogin.favorite_city}
+        </p>
       </div>
-      <SearchBar setLocation={setLocation}/>
-      <button onClick={() => handleClickSaveFavorite(location)}>Save Favorite</button>
+      <SearchBar setLocation={setLocation} />
+      <button onClick={() => handleClickSaveFavorite(location)}>
+        Save Favorite
+      </button>
       <button onClick={handleClickUpdateFavorite}>Update Favorite City</button>
 
       {updateFavoritesVisible && (
@@ -150,8 +153,13 @@ useEffect(() => {
         />
       )}
 
-      {errorMessageVisible && <ErrorMessage errorType={errorType} setErrorMessageVisible={setErrorMessageVisible}/>}
-      <WeatherData weatherData={weatherData}/>
+      {errorMessageVisible && (
+        <ErrorMessage
+          errorType={errorType}
+          setErrorMessageVisible={setErrorMessageVisible}
+        />
+      )}
+      <WeatherData weatherData={weatherData} />
     </div>
   );
 }

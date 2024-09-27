@@ -23,13 +23,11 @@
   height:250px;
   border: 1px solid black;
   border-radius: 10px;
-  /* background-color: rgba(0,0,0,0.4); */
   background-color: lightgrey;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  /* background-color: rgb(132, 173, 169); */
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXWP6fCmWhukUCRBBcFulrG1FnOooFegCH-g&s");
   background-size: cover;
   background-color: rgb(140, 119, 180);

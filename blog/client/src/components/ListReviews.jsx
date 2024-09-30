@@ -1,6 +1,6 @@
-import Reviews from "./Review";
+import Review from "./Review";
 
-function ListReviews({ reviews, setGameDetailsVisible }) {
+function ListReviews({ reviews, setGameDetailsVisible, onClickHandleGameDetailsVisible }) {
 
     return (
         <div>
@@ -10,9 +10,10 @@ function ListReviews({ reviews, setGameDetailsVisible }) {
                     return (
                         <li key={reviews.game_id}>
                             {" "}
-                            <Reviews 
+                            <Review 
                             reviews={reviews}
                             setGameDetailsVisible={setGameDetailsVisible}
+                            onClickHandleGameDetailsVisible={onClickHandleGameDetailsVisible}
                             />
                         </li>
                     )

@@ -16,3 +16,22 @@ li {
     margin-bottom: 10px;
     border-radius: 10px; 
 }
+
+.gameDetailsModal {
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: rgb(209, 224, 248);
+  /* controls stacking order of overlapping elements on the page */
+  z-index: 10; 
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  /* to position modal on top of everything else */
+  position:fixed;
+  top:calc(50% - 200px);
+  left:calc(50% - 250px);
+  width: 500px;
+  height: 300px;
+  display: flex;
+  transition: transform 0.3s ease, background-image 0.3s ease;
+}

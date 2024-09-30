@@ -4,10 +4,12 @@ import axios from 'axios';
 import { PrimeReactProvider } from 'primereact/api';
 import Review from './components/Review';
 import ListReviews from './components/ListReviews';
+import GameDetailsModal from './components/GameDetailsModal';
 
 function App() {
 
   const [reviews, setReviews] = useState([]);
+  const [gameDetailsVisible, setGameDetailsVisible] = useState(false);
  
   useEffect(() => {
     axios.get('http://localhost:8080/reviews')
@@ -16,12 +18,13 @@ function App() {
   }, []);
   console.log('reviews', reviews);
 
-
   return (
     <PrimeReactProvider>
      <div className='reviews-container'>
-        <h1>Reviews Blog</h1>
-        <ListReviews reviews={reviews}/>
+        <h1>Community Game Review Blog</h1>
+        <ListReviews reviews={reviews} setGameDetailsVisible={setGameDetailsVisible}/>
+        {gameDetailsVisible &&
+        <GameDetailsModal/>}
      </div>
     </PrimeReactProvider>
   )

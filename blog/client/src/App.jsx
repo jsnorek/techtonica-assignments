@@ -26,6 +26,10 @@ function App() {
   console.log('reviews', reviews);
 
   useEffect(() => {
+    
+  }, []);
+
+  useEffect(() => {
     axios.get('http://localhost:8080/games')
     .then(response => setAllGames(response.data))
     .catch(error => console.error(error));
@@ -71,7 +75,7 @@ function App() {
         <Button label='Add New Review' onClick={handleCreateReviewFormVisible}/>
         {createReviewFormVisible && 
         <CreateReview setCreateReviewFormVisible={setCreateReviewFormVisible} allGames={allGames} addNewReview={addNewReview}/>}
-        <ListReviews reviews={reviews} setGameDetailsVisible={setGameDetailsVisible} onClickHandleGameDetailsVisible={handleGameDetailsVisible}/>
+        <ListReviews reviews={reviews} setGameDetailsVisible={setGameDetailsVisible} onClickHandleGameDetailsVisible={handleGameDetailsVisible} setReviews={setReviews}/>
         {gameDetailsVisible &&
         <GameDetailsModal setGameDetailsVisible={setGameDetailsVisible} gameDetails={gameDetails}/>}
      </div>

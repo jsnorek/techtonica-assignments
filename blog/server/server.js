@@ -77,8 +77,22 @@ app.post('/reviews', async (req, res) => {
             "INSERT INTO reviews(reviewer_name, game_id, rating, review_text) VALUES($1, $2, $3, $4) RETURNING *",
             [newReview.reviewer_name, newReview.game_id, newReview.rating, newReview.review_text]
         );
+        console.log(result.rows[0]);
+        res.json(result.rows[0]);
     } catch (e) {
         console.log('error adding review', e);
+        return res.status(400).json({ error: e.message });
+    }
+});
+
+app.delete("/reviews/:review_id", async (req, res) => {
+    try {
+        const review_id = req.params.review_id;
+        await db.query("DELETE FROM reviews WHERE review_id=$1", [review_id]);
+        console.log("From the delete request-url", review_id);
+        res.status(200).end();
+    } catch (e) {
+        console.log('error deleting review', e);
         return res.status(400).json({ error: e.message });
     }
 });

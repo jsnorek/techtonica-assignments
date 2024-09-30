@@ -7,7 +7,7 @@ export const postReview = async (newReview) => {
     if (!response.ok) {
         throw new Error("Failed to submit form. Please try again.");
     }
-
+    
     const data = await response.json()
     return data;
 };

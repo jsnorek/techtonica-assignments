@@ -10,10 +10,10 @@ function Reviews({ reviews, setGameDetailsVisible, onClickHandleGameDetailsVisib
     return (
             <div className="review-cards">
                 <Card title={reviews.title}>
-                    <p>{reviews.rating}</p>
+                    <p>Rating: {reviews.rating}</p>
                     <p>"{reviews.review_text}"</p>
                     <p>-{reviews.reviewer_name}</p>
-                    <p>{reviews.review_date}</p>
+                    <p>Review Posted: {new Date(reviews.review_date).toLocaleDateString()}</p>
                 </Card>
                 <Button 
                     label="Game Details" 

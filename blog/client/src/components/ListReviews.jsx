@@ -8,7 +8,7 @@ function ListReviews({ reviews, setGameDetailsVisible, onClickHandleGameDetailsV
             <ul>
                 {reviews.map((reviews) => {
                     return (
-                        <li key={reviews.game_id}>
+                        <li key={reviews.review_id}>
                             {" "}
                             <Review 
                             reviews={reviews}
@@ -16,7 +16,7 @@ function ListReviews({ reviews, setGameDetailsVisible, onClickHandleGameDetailsV
                             onClickHandleGameDetailsVisible={onClickHandleGameDetailsVisible}
                             />
                         </li>
-                    )
+                    );
                 })}
             </ul>
         </div>

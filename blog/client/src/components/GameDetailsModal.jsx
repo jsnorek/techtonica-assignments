@@ -22,7 +22,7 @@ function GameDetailsModal({ setGameDetailsVisible, gameDetails }) {
                             <p>Title: {details.title}</p>
                             <p>Genre: {details.genre}</p>
                             <p>Platform: {details.platform}</p>
-                            <p>Release Date: {details.release_date}</p>
+                            <p>Release Date: {new Date(details.release_date).toLocaleDateString()}</p>
                             <p>Developer: {details.developer}</p>
                         </>
                     ) : (

@@ -29,7 +29,7 @@ function Reviews({
         onClick={() => onClickHandleGameDetailsVisible(reviews.game_id)}
       />
       <Button label="Delete" onClick={() => onDelete(reviews.review_id)}/>
-      <Button label="Edit" />
+      {/* <Button label="Edit" /> */}
     </div>
   );
 }

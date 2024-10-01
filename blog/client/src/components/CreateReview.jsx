@@ -81,6 +81,7 @@ function CreateReview({ setCreateReviewFormVisible, allGames, addNewReview }) {
           id="game"
           checkmark
           highlightOnSelect
+          required
           value={review.game_id}
           onChange={handleDropdownChange}
         />
@@ -99,6 +100,7 @@ function CreateReview({ setCreateReviewFormVisible, allGames, addNewReview }) {
           name="review_text"
           placeholder="Write your review here"
           rows="4"
+          required
           value={review.review_text}
           onChange={handleChange}
         />

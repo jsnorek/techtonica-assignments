@@ -114,9 +114,9 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
           value={review.review_text}
           onChange={handleChange}
         />
-        <Button label="Submit" />
+        <Button label="Submit" aria-hidden={false} rounded/>
       </form>
-      <Button label="Cancel" onClick={handleCreateReviewFormVisible} />
+      <Button label="Cancel" onClick={handleCreateReviewFormVisible} rounded/>
     </div>
   );
 }

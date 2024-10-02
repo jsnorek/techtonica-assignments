@@ -26,7 +26,7 @@ function App() {
   console.log('reviews', reviews);
 
   useEffect(() => {
-    
+
   }, []);
 
   useEffect(() => {

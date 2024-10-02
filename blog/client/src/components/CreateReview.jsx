@@ -4,7 +4,7 @@ import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
 import * as actions from "../actions/postReview";
 
-function CreateReview({ setCreateReviewFormVisible, allGames, addNewReview }) {
+function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview }) {
   const [errorMessage, setErrorMessage] = useState("");
   const [review, setReview] = useState({
     reviewer_name: "",
@@ -28,10 +28,19 @@ function CreateReview({ setCreateReviewFormVisible, allGames, addNewReview }) {
   };
 
   //Map over allGames to create an array of options for the dropdown
-  const gameOptions = allGames.map((game) => ({
-    label: game.title, // Game title displayed in the dropdown
-    value: game.game_id, // Game Id used as value
-  }));
+  // eslint-disable-next-line react/prop-types
+//   const gameOptions = allGames.map((game) => ({
+//     label: game.title, // Game title displayed in the dropdown
+//     value: game.game_id, // Game Id used as value
+//   }));
+
+ // Only map over allGames if it's an array and has data
+ const gameOptions = Array.isArray(allGames) && allGames.length > 0
+ ? allGames.map((game) => ({
+     label: game.title, // Game title displayed in the dropdown
+     value: game.game_id, // Game Id used as value
+   }))
+ : [];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +72,7 @@ function CreateReview({ setCreateReviewFormVisible, allGames, addNewReview }) {
 
   // look into InputText primereact
   return (
-    <div className="create-review-container">
+    <div className="create-review-container" data-testid="create-review">
       <form className="create-review-form" onSubmit={handleSubmit}>
         <input
           id="reviewer_name"
@@ -76,6 +85,7 @@ function CreateReview({ setCreateReviewFormVisible, allGames, addNewReview }) {
         />
         <Dropdown
           showClear
+          data-testid="game-choice"
           placeholder="Select a game"
           options={gameOptions}
           id="game"

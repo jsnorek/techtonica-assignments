@@ -17,6 +17,7 @@ function App() {
   const [selectedGameId, setSelectedGameId] = useState(null);
   const [createReviewFormVisible, setCreateReviewFormVisible] = useState(false);
   const [allGames, setAllGames] = useState([]);
+  const [summarizedReview, setSummarizedReview] = useState("");
  
   useEffect(() => {
     axios.get('http://localhost:8080/reviews')
@@ -68,6 +69,16 @@ function App() {
     setCreateReviewFormVisible(true);
   }
 
+  // Summarize review function to send review text to the backend
+  const summarizeReview = async (reviewText) => {
+    try {
+      const response = await axios.post('http://localhost:8080/summarize', { review_text: reviewText });
+      setSummarizedReview(response.data.summary);
+    } catch (error) {
+      console.error('Error summarizing review: ', error);
+    }
+  };
+
   return (
     <PrimeReactProvider>
      <div className='reviews-container'>
@@ -75,9 +86,10 @@ function App() {
         <Button label='Add New Review' onClick={handleCreateReviewFormVisible}/>
         {createReviewFormVisible && 
         <CreateReview setCreateReviewFormVisible={setCreateReviewFormVisible} allGames={allGames} addNewReview={addNewReview}/>}
-        <ListReviews reviews={reviews} setGameDetailsVisible={setGameDetailsVisible} onClickHandleGameDetailsVisible={handleGameDetailsVisible} setReviews={setReviews}/>
+        <ListReviews reviews={reviews} setGameDetailsVisible={setGameDetailsVisible} onClickHandleGameDetailsVisible={handleGameDetailsVisible} setReviews={setReviews} summarizeReview={summarizeReview} summarizedReview={summarizedReview}/>
         {gameDetailsVisible &&
         <GameDetailsModal setGameDetailsVisible={setGameDetailsVisible} gameDetails={gameDetails}/>}
+        {summarizedReview && <p className='summary'>Summarized Review: {summarizedReview}</p>}
      </div>
     </PrimeReactProvider>
   )

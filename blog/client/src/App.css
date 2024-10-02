@@ -14,7 +14,14 @@ li {
   list-style-type: none;
 }
 
-
+.summary {
+  background-color: rgba(47, 162, 160, 0.8);
+  border: 2px solid white;
+  padding: 30px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px; 
+}
 
 .review-cards {
     background-color: rgba(255, 50, 190, 0.8);

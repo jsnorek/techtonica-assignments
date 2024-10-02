@@ -6,6 +6,8 @@ function ListReviews({
   setGameDetailsVisible,
   onClickHandleGameDetailsVisible,
   setReviews,
+  summarizeReview,
+  summarizedReview
 }) {
   const onDelete = (reviewId) => {
     axios
@@ -37,6 +39,8 @@ function ListReviews({
                   onClickHandleGameDetailsVisible
                 }
                 onDelete={onDelete}
+                summarizeReview={summarizeReview}
+                summarizedReview={summarizedReview}
               />
             </li>
           );

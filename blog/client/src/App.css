@@ -41,6 +41,7 @@ li {
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(209, 224, 248);
+  color: black;
   /* controls stacking order of overlapping elements on the page */
   z-index: 10; 
   /* display: flex; */
@@ -71,7 +72,8 @@ li {
 }
 
 .p-dropdown {
-  width: auto;
+  width: 100%;
+  background-color: rgb(117, 117, 117);
 }
 
 .p-dropdown-open {
@@ -79,6 +81,6 @@ li {
 }
 
 .p-dropdown-items {
-  background-color: rgb(215, 215, 251);
+  background-color: rgb(67, 133, 255);
 }
 

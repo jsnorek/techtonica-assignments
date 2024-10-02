@@ -44,11 +44,12 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // if (!review.game_id) {
-    //     setErrorMessage("Choosing a game is required.")
-    //     console.log(errorMessage);
-    //     return;
-    // }
+    console.log('review before submitting', review);
+    if (!review.game_id) {
+        setErrorMessage("Choosing a game is required.")
+        console.log(errorMessage);
+        return;
+    }
     try {
       const data = await actions.postReview(review);
       console.log("this is the data", data);

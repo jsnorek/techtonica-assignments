@@ -1,12 +1,19 @@
-import React from "react";
+
 import { render, screen } from "@testing-library/react";
 import { describe, it, expect, jest } from "@jest/globals";
-import userEvent from "@testing-library/user-event";
 import GameDetailsModal from "../GameDetailsModal";
+
+jest.mock('primereact/button', () => ({
+    Button: (props) => <button {...props}>{props.label}</button>
+}));
+
+jest.mock('primereact/card', () => ({
+    Card: ({ children }) => <div>{children}</div>
+}));
 
 describe("GameDetailsModal", () => {
     it("should render successfully", () => {
-        render(<GameDetailsModal setGameDetailsVisible={jest.fn()} gameDetails={jest.fn()}/>)
-        expect(screen.getByTestId("game-details-modal"))
+        render(<GameDetailsModal setGameDetailsVisible={jest.fn()} gameDetails={[]} />)
+        expect(screen.getByTestId("game-details-modal")).toBeTruthy();
     });
-})
+});

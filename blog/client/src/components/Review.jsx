@@ -17,7 +17,7 @@ function Reviews({
   //     setGameDetailsVisible(true);
   //   };
   return (
-    <div className="review-cards">
+    <div className="review-cards" data-testid="review-cards">
       <Card title={reviews.title}>
         <p>Rating: {reviews.rating}</p>
         <p>"{reviews.review_text}"</p>

@@ -2,6 +2,15 @@ import { Button } from "primereact/button";
 import { Card } from "primereact/card";
 import GameDetailsModal from "./GameDetailsModal";
 
+// To fix CSS parsing error
+const originalConsoleError = console.error;
+const jsDomCssError = "Error: Could not parse CSS stylesheet";
+console.error = (...params) => {
+  if (!params.find((p) => p.toString().includes(jsDomCssError))) {
+    originalConsoleError(...params);
+  }
+};
+
 function Reviews({
   reviews,
   setGameDetailsVisible,

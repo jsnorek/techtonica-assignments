@@ -1,6 +1,15 @@
 import axios from "axios";
 import Review from "./Review";
 
+// To fix parsing error
+const originalConsoleError = console.error;
+const jsDomCssError = "Error: Could not parse CSS stylesheet";
+console.error = (...params) => {
+  if (!params.find((p) => p.toString().includes(jsDomCssError))) {
+    originalConsoleError(...params);
+  }
+};
+
 function ListReviews({
   reviews,
   setGameDetailsVisible,

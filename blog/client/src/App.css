@@ -86,3 +86,51 @@ li {
 .error-message {
   color: red;
 }
+
+@media (max-width: 1020px) {
+  #root {
+    padding: .8rem;
+    max-width: 100%;
+  }
+
+  .review-cards {
+    width: 80%;
+  }
+
+  .gameDetailsModal {
+    width: 50%;
+    height: 35%;
+    padding: 10px;
+    font-size: .8rem;
+  }
+}
+
+/* Small Screens (Phones) */
+@media (max-width: 650px) {
+  #root {
+    padding: .6rem;
+    max-width: 100%;
+  }
+  body {
+    font-size: .8rem;
+  }
+
+  h1 {
+    font-size: .8rem;
+  }
+
+  .review-cards {
+    width: 75%;
+  }
+
+  .gameDetailsModal {
+    width: 70%;
+    height: 35%;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top:calc(50% - 200px);
+    left:calc(50% - 200px);
+  }
+}

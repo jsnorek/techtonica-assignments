@@ -54,7 +54,6 @@ li {
   width: 500px;
   height: 300px;
   display: flex;
-  transition: transform 0.3s ease, background-image 0.3s ease;
 }
 
 .create-review-container {
@@ -84,3 +83,6 @@ li {
   background-color: rgb(67, 133, 255);
 }
 
+.error-message {
+  color: red;
+}

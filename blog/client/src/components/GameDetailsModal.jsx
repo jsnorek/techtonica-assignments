@@ -3,10 +3,12 @@ import { Card } from "primereact/card";
 
 function GameDetailsModal({ setGameDetailsVisible, gameDetails }) {
 
+    // Hide game details
     const turnGameDetailsVisibleOff = () => {
         setGameDetailsVisible(false);
     };
 
+    // Making sure gameDetails exists for testing
     const details = gameDetails && gameDetails.length > 0 ? gameDetails[0] : null;
 
     console.log('clicked game details array', gameDetails);

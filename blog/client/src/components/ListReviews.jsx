@@ -9,6 +9,8 @@ function ListReviews({
   summarizeReview,
   summarizedReview
 }) {
+
+    //Handle deleting reviews
   const onDelete = (reviewId) => {
     axios
       .delete(`http://localhost:8080/reviews/${reviewId}`)

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { Button } from "primereact/button";
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
@@ -13,6 +13,7 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
     review_text: "",
   });
 
+  // Clear the form 
   const clearForm = () => {
     setReview({
       reviewer_name: "",
@@ -23,16 +24,17 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
     setErrorMessage("");
   };
 
+  // Timer for error message
+  useEffect(() => {
+    setTimeout(() => {
+        setErrorMessage("");
+    }, 5000);
+  },[])
+
+  // Hide create review form
   const handleCreateReviewFormVisible = () => {
     setCreateReviewFormVisible(false);
   };
-
-  //Map over allGames to create an array of options for the dropdown
-  // eslint-disable-next-line react/prop-types
-//   const gameOptions = allGames.map((game) => ({
-//     label: game.title, // Game title displayed in the dropdown
-//     value: game.game_id, // Game Id used as value
-//   }));
 
  // Only map over allGames if it's an array and has data
  const gameOptions = Array.isArray(allGames) && allGames.length > 0
@@ -42,11 +44,12 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
    }))
  : [];
 
+ // If missing game_id or review_text set error, otherwise post new review
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('review before submitting', review);
-    if (!review.game_id) {
-        setErrorMessage("Choosing a game is required.")
+    if (!review.game_id || !review.review_text) {
+        setErrorMessage("Selecting a game and writing a review is required.")
         console.log(errorMessage);
         return;
     }
@@ -62,16 +65,19 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
     }
   };
 
+  // Handle input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setReview((prevReview) => ({ ...prevReview, [name]: value }));
   };
 
+  // Handle dropdown change
   const handleDropdownChange = (e) => {
     setReview((prevReview) => ({ ...prevReview, game_id: e.value }));
   };
 
-  // look into InputText primereact
+  console.log('form error message', errorMessage);
+
   return (
     <div className="create-review-container" data-testid="create-review">
       <form className="create-review-form" onSubmit={handleSubmit}>
@@ -92,7 +98,6 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
           id="game"
           checkmark
           highlightOnSelect
-          required
           value={review.game_id}
           onChange={handleDropdownChange}
         />
@@ -111,13 +116,13 @@ function CreateReview({ setCreateReviewFormVisible, allGames = [], addNewReview 
           name="review_text"
           placeholder="Write your review here"
           rows="4"
-          required
           value={review.review_text}
           onChange={handleChange}
         />
         <Button label="Submit" aria-hidden={false} rounded/>
       </form>
       <Button label="Cancel" onClick={handleCreateReviewFormVisible} rounded/>
+      {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
 }

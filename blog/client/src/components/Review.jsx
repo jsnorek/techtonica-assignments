@@ -13,9 +13,7 @@ function Reviews({
   if (!reviews) {
     return <div>Loading...</div>;
   }
-  // const handleGameDetailsVisible = () => {
-  //     setGameDetailsVisible(true);
-  //   };
+
   return (
     <div className="review-cards" data-testid="review-cards">
       <Card title={reviews.title}>
@@ -32,8 +30,6 @@ function Reviews({
       />
       <Button label="Delete" onClick={() => onDelete(reviews.review_id)}/>
       <Button label="Summarize" onClick={() => summarizeReview(reviews.review_text)}/>
-      {/* {summarizedReview && <p className='summary'>Summarized Review: {summarizedReview}</p>} */}
-      {/* <Button label="Edit" /> */}
     </div>
   );
 }

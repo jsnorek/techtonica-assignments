@@ -14,7 +14,14 @@ li {
   list-style-type: none;
 }
 
-
+.summary {
+  background-color: rgba(47, 162, 160, 0.8);
+  border: 2px solid white;
+  padding: 30px;
+  padding-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px; 
+}
 
 .review-cards {
     background-color: rgba(255, 50, 190, 0.8);
@@ -34,6 +41,7 @@ li {
   border: 1px solid black;
   border-radius: 10px;
   background-color: rgb(209, 224, 248);
+  color: black;
   /* controls stacking order of overlapping elements on the page */
   z-index: 10; 
   /* display: flex; */
@@ -64,7 +72,8 @@ li {
 }
 
 .p-dropdown {
-  width: auto;
+  width: 100%;
+  background-color: rgb(117, 117, 117);
 }
 
 .p-dropdown-open {
@@ -72,6 +81,6 @@ li {
 }
 
 .p-dropdown-items {
-  background-color: rgb(215, 215, 251);
+  background-color: rgb(67, 133, 255);
 }
 

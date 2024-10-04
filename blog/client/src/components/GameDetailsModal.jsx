@@ -13,7 +13,7 @@ function GameDetailsModal({ setGameDetailsVisible, gameDetails }) {
     console.log('clicked game details object', details);
 
     return (
-        <div className="gameDetailsModal">
+        <div className="gameDetailsModal" data-testid="game-details-modal">
             <h2>Game Details</h2>
             <div className="game-details-card">
                 <Card>

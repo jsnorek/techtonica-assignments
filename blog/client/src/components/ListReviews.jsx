@@ -6,6 +6,8 @@ function ListReviews({
   setGameDetailsVisible,
   onClickHandleGameDetailsVisible,
   setReviews,
+  summarizeReview,
+  summarizedReview
 }) {
   const onDelete = (reviewId) => {
     axios
@@ -23,7 +25,7 @@ function ListReviews({
   };
 
   return (
-    <div>
+    <div data-testid="list-reviews">
       <h3>Review List</h3>
       <ul>
         {reviews.map((reviews) => {
@@ -37,6 +39,8 @@ function ListReviews({
                   onClickHandleGameDetailsVisible
                 }
                 onDelete={onDelete}
+                summarizeReview={summarizeReview}
+                summarizedReview={summarizedReview}
               />
             </li>
           );

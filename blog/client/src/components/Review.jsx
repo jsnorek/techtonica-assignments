@@ -6,7 +6,9 @@ function Reviews({
   reviews,
   setGameDetailsVisible,
   onClickHandleGameDetailsVisible,
-  onDelete
+  onDelete,
+  summarizeReview,
+  summarizedReview
 }) {
   if (!reviews) {
     return <div>Loading...</div>;
@@ -15,7 +17,7 @@ function Reviews({
   //     setGameDetailsVisible(true);
   //   };
   return (
-    <div className="review-cards">
+    <div className="review-cards" data-testid="review-cards">
       <Card title={reviews.title}>
         <p>Rating: {reviews.rating}</p>
         <p>"{reviews.review_text}"</p>
@@ -29,6 +31,8 @@ function Reviews({
         onClick={() => onClickHandleGameDetailsVisible(reviews.game_id)}
       />
       <Button label="Delete" onClick={() => onDelete(reviews.review_id)}/>
+      <Button label="Summarize" onClick={() => summarizeReview(reviews.review_text)}/>
+      {/* {summarizedReview && <p className='summary'>Summarized Review: {summarizedReview}</p>} */}
       {/* <Button label="Edit" /> */}
     </div>
   );

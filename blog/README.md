@@ -15,6 +15,8 @@ A blog application for displaying video game reviews listed in the database. Als
 - **Testing**: Vitest, React Testing Library (RTL), Jest
 
 #### Once you have successfully setup this template and initial database, the view will look like this:
+![ScreenRecording2024-10-04at9 26 26AM-ezgif com-optimize](https://github.com/user-attachments/assets/66f555c0-df83-4a8b-862f-65fbd9f33f1b)
+
 
 ## API Usage
 This blog review app uses the OpenAI API to take in review text and create a summary. You can sign up for an account to get an API key and view API documentation here: https://platform.openai.com/docs/api-reference/introduction

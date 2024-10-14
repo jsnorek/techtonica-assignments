@@ -1,4 +1,4 @@
-# Contact List
+# Weather App
 
 A weather application using OpenWeatherMap API for displaying the current weather based on user search. 
 

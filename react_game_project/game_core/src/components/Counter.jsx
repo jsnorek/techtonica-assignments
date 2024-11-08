@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+// to handle the score counter
 
-//pulls useState from App
 export default function Counter({score, setScore}) {
-    // shows count = 0 //count starting at 0
      
-      //increment function to add points and reset score
+      // Increment function to add points and reset score
       const incrementCounter = () => {
         setScore(score + 100);
       }
 
+      // Function to reset the counter
       const resetCounter = () => {
         setScore(0);
       }
       
       return (
         <div className="counter">
-          {/*count is the state here*/}
           <p>Score: {score}</p>
           <button onClick={incrementCounter}>+</button>
           <button onClick={resetCounter}>reset</button>
         </div>
       );
-    }
+    };

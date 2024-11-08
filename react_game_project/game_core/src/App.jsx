@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Asteroid from "./Asteroid";
-import Counter from "./Counter";
+import Asteroid from "./components/Asteroid";
+import Counter from "./components/Counter";
 
 
 function App() {
@@ -9,6 +9,8 @@ function App() {
   //game score
   const [score, setScore] = useState(0);
 
+  // Handles moving ship when user presses left or right arrow keys
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function handleKeyDown(e) {
     if (e.key === "ArrowLeft") {
       if (position >= 0) {
@@ -20,7 +22,7 @@ function App() {
       }
     }
   }
-//useeffect is a callback that runs after the component renders and here, adds an event listener for "keydown" event that runs the handleKeyDown function
+// On render, adds an event listener for "keydown" event that runs the handleKeyDown function
   useEffect(() => {
     document.addEventListener("keydown", handleKeyDown);
     return () => {

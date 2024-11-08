@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Asteroid from "./components/Asteroid";
-import Counter from "./Counter";
+import Counter from "./components/Counter";
 
 
 function App() {

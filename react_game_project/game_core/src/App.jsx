@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Asteroid from "./Asteroid";
+import Asteroid from "./components/Asteroid";
 import Counter from "./Counter";
 
 

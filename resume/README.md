@@ -44,3 +44,7 @@ open index.html
 
 - HTML5
 - CSS
+
+## License
+
+This project is licensed under the MIT License

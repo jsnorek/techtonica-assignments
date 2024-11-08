@@ -4,86 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>Juliana Snorek's Resume</title>
 </head>
 <body>
-    <div class="topnav">
-        <a class="active" href="#home">Home</a>
-        <a href="#contact">Contact</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-      </div>
-    <div class="topSection">
-    <div class = "photo">
-        <img id="headshot" src="https://cdn.syngency.com/166/models/534474/galleries/1064363/large/18418360.jpg?1698701047" alt="picture of Juliana, a white woman wiht long blonde hair, smiling, and wearing a green sweater." width="250px">
-    </div>
-    <div class="headerSection">
-    <h1>Juliana Snorek</h1>
-    <p><em>Software Engineer In Training</em></p>
-    <p id="description">Aspiring Software Engineer with a comprehensive background in marketing, real estate, and freelance consulting. Currently training in full-stack JavaScript through Techtonica’s intensive program. Skilled in communication, attention to detail, and project management, with experience from roles at PAE and Compass. Proven ability to adapt and excel in various professional environments, with a commitment to continuous learning and growth in software development.</p>
-    </div>
-    </div>
-    <div id="contact">
-        <h2 class="headingTitles">Contact</h2>
-            <p><a href="mailto:jsnorek340@gmail.com">Gmail</a></p>
-            <p><a href="https://github.com/jsnorek">GitHub</a></p>
-            <p><a href="https://www.linkedin.com/in/juliana-snorek/">LinkedIn</a></p>
-    </div>
-    <div class="mainBody">
-        <div class="skills">   
-            <h2 class="headingTitles">Skills</h2>
-                <ul id="skillsList"></ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Javascript</li>
-                    <li>VS Code</li>
-                    <li>GitHub</li>
-        </div> 
-        <div class="rightSide">     
-        <div id="experience">
-            <h2 class="headingTitles">Experience</h2>
-                <p>Marketing Coordinator</p>
-                <p><em>PAE</em></p>
-                <p>04/2023 - 07/2024</p>
-                <ul>
-                    <li>Develop, research, write, and create qualification packages including project descriptions and lists, staff resumes and bios, and company information.</li>
-                    <li>Maintain database content (Deltek for VantagePoint)</li>
-                    <li>Assist with processing invoices for marketing related expenditures.</li>
-                    <li>Organize and file marketing materials on the network.</li>
-                    <li>Track sponsorship requests, coordinate approvals, and submit check requests.</li>
-                </ul>
+    <header>
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a href="#contact">Contact</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
         </div>
-        <div id="education">
-            <h2 class="headingTitles">Education</h2>
-                <p><em>Techtonica</em></p>
-                <p>06/2024-Present</p>
-                <p>Full-stack Javascript Software Engineer Training</p>
-                <p><em>Sonoma State University</em></p>
-                <p>2018-2020</p>
-                <p>BA Liberal Studies, Elementary Education and Teaching</p>
-                <p><em>Santa Rosa Junior College</em></p>
-                <p>2012-2016</p>
-                <p>AA Communications and Marketing</p>
-        </div> 
-        </div>
-        
-        <div class="formPage">
-            <form>
-                <fieldset class="fieldset">
-                    <p>Want to connect? Fill out the form below!</p>
-                    <label for="name">Name</label>
-                    <input id="name" type="text" name="name" required></input>
-                    <label for="email">Email</label>
-                    <input id="email" type="email" name="email" required></input>
-                    <label for="phone">Phone</label>
-                    <input id="phone" type="text" name="phone"></input>
-                    <label for="address">Address</label>
-                    <input id="address" type="text" name="address"></input>
-                    <input type="submit" value="Submit" />
-                </fieldset>
-            </form>
-        </div>
-    </div>
+    </header>
+    <main>
+        <section class="topSection">
+            <div class = "photo">
+                <img id="headshot" src="https://cdn.syngency.com/166/models/534474/galleries/1064363/large/18418360.jpg?1698701047" alt="Juliana Snorek smiling, with long blonde hair, wearing a green sweater." width="250px">
+            </div>
+            <div class="headerSection">
+            <h1>Juliana Snorek</h1>
+            <p><em>Software Engineer In Training</em></p>
+            <p id="description">Aspiring Software Engineer with a comprehensive background in marketing, real estate, and freelance consulting. Currently training in full-stack JavaScript through Techtonica’s intensive program. Skilled in communication, attention to detail, and project management, with experience from roles at PAE and Compass. Proven ability to adapt and excel in various professional environments, with a commitment to continuous learning and growth in software development.</p>
+            </div>
+        </section>
+        <section id="contact">
+            <h2 class="headingTitles">Contact</h2>
+                <p><a href="mailto:jsnorek340@gmail.com" aria-label="Email Juliana Snorek"><i class="fas fa-envelope fa-2x" aria-hidden="true"></i></a></p>
+                <p><a href="https://github.com/jsnorek" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github fa-2x" aria-hidden="true"></i></a></p>
+                <p><a href="https://www.linkedin.com/in/juliana-snorek/" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin fa-2x" aria-hidden="true"></i></a></p>
+        </section>
+        <section class="mainBody">
+            <section class="skills">   
+                <h2 class="headingTitles">Skills</h2>
+                    <ul id="skillsList">
+                        <li>HTML</li>
+                        <li>CSS</li>
+                        <li>Javascript</li>
+                        <li>VS Code</li>
+                        <li>GitHub</li>
+                    </ul>
+            </section> 
+            <section class="rightSide">     
+                <div id="experience">
+                    <h2 class="headingTitles">Experience</h2>
+                    <article>
+                        <h3>Marketing Coordinator</h3>
+                        <p><em>PAE</em></p>
+                        <p>04/2023 - 07/2024</p>
+                        <ul>
+                            <li>Develop, research, write, and create qualification packages including project descriptions and lists, staff resumes and bios, and company information.</li>
+                            <li>Maintain database content (Deltek for VantagePoint)</li>
+                            <li>Assist with processing invoices for marketing related expenditures.</li>
+                            <li>Organize and file marketing materials on the network.</li>
+                            <li>Track sponsorship requests, coordinate approvals, and submit check requests.</li>
+                        </ul>
+                    </article>
+                </div>
+                <div id="education">
+                    <h2 class="headingTitles">Education</h2>
+                        <p><em>Techtonica</em></p>
+                        <p>06/2024-Present</p>
+                        <p>Full-stack Javascript Software Engineer Training</p>
+                        <p><em>Sonoma State University</em></p>
+                        <p>2018-2020</p>
+                        <p>BA Liberal Studies, Elementary Education and Teaching</p>
+                        <p><em>Santa Rosa Junior College</em></p>
+                        <p>2012-2016</p>
+                        <p>AA Communications and Marketing</p>
+                </div> 
+            </section>  
+            <section class="formPage">
+                <form>
+                    <fieldset class="fieldset">
+                        <p>Want to connect? Fill out the form below!</p>
+                        <label for="name">Name</label>
+                        <input id="name" type="text" name="name" required></input>
+                        <label for="email">Email</label>
+                        <input id="email" type="email" name="email" required></input>
+                        <label for="phone">Phone</label>
+                        <input id="phone" type="text" name="phone"></input>
+                        <label for="address">Address</label>
+                        <input id="address" type="text" name="address"></input>
+                        <input type="submit" value="Submit" />
+                    </fieldset>
+                </form>
+            </section>
+        </section>
+    </main>
     <script src="index.js"></script>
 </body>
 </html>

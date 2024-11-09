@@ -41,6 +41,24 @@ app.get('/albums', async (req, res) => {
     }
 });
 
+// Fetch albums based on specific artist
+app.get('/albums/artist/:artist', async (req, res) => {
+    try {
+        const artist = req.params.artist;
+        const query = 'SELECT * FROM album WHERE artist = $1';
+        const result = await db.query(query, [artist]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: `No albums found for artist ${artist}` });
+        }
+
+        res.status(200).json(result.rows);
+    } catch (error) {
+        console.error('Error fetching albums by artist:', error);
+        res.status(500).send('Internal server error');
+    }
+});
+
 // Create new album
 app.post('/albums', async (req, res) => {
     try {

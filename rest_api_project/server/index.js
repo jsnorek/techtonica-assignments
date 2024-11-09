@@ -5,7 +5,7 @@ import pkg from 'pg';
 
 
 const app = express();
-const PORT = 5001;
+const PORT = 5002;
 
 //configuring cors middleware
 app.use(cors());

@@ -24,17 +24,16 @@ const db = new Pool({
   port: 5432,
 });
 
-//create route for root directory - listens for GET request to the root path of the API and sends a response with the message
+// Create route for root directory - listens for GET request to the root path of the API and sends a response with the message
 app.get('/', (req, res) => {
     res.json("test message hello");
 });
 
+// Fetch all album data
 app.get('/albums', async (req, res) => {
     try {
-        //fetch albums from database
         const query = 'SELECT * FROM album';
         const result = await db.query(query);
-         //send the album data as a JSON response
          res.status(200).json(result.rows);
     } catch (error) {
         console.error('Error fetching albums:', error);
@@ -42,7 +41,7 @@ app.get('/albums', async (req, res) => {
     }
 });
 
-
+// Create new album
 app.post('/albums', async (req, res) => {
     try {
         const { title, number, tracks, artist, date } = req.body;
@@ -56,6 +55,7 @@ app.post('/albums', async (req, res) => {
     }
 });
 
+// Edit album based on album number
 app.put('/albums/:number', async (req, res) => {
     try {
         const { title, tracks, artist, date } = req.body;
@@ -68,7 +68,7 @@ app.put('/albums/:number', async (req, res) => {
     }
 });
         
-
+// Delete album based on album number
 app.delete('/albums/:number', async (req, res) => {
     try {
         const albumNumber = req.params.number;

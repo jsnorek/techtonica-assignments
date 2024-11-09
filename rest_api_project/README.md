@@ -33,3 +33,6 @@ node index.js
 ```
 
 ### Demo
+*Can use Postman to check endpoints
+<img width="589" alt="Screenshot 2024-11-08 at 6 44 28 PM" src="https://github.com/user-attachments/assets/44fc012d-8ada-4f88-9844-5d556daa1b19">
+
